@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="Kalkulator untuk menghitung estimasi gaji pokok, tunjangan, dan upah lembur karyawan PT BYD Auto Indonesia." name="description"/>
+    <meta content="website" property="og:type"/>
+    <meta content="Kalkulator Gaji &amp; Lembur - PT BYD Auto Indonesia" property="og:title"/>
+    <meta content="Hitung otomatis estimasi gaji pokok, tunjangan, dan upah lembur." property="og:description"/>
+    <meta content="https://kasirpos.github.io/byd-pwa/" property="og:url"/>
+    <meta content="PT BYD Auto Indonesia" property="og:site_name"/>
+    <meta content="https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png" property="og:image"/>
+    <meta content="https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png" property="og:image:secure_url"/>
+    <meta content="image/png" property="og:image:type"/>
+    <meta content="600" property="og:image:width"/>
+    <meta content="300" property="og:image:height"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="Kalkulator Gaji &amp; Lembur" name="twitter:title"/>
+    <meta content="Hitung otomatis estimasi gaji." name="twitter:description"/>
+    <meta content="https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png" name="twitter:image"/>
+    <link href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 100%22%3E%3Crect width=%22200%22 height=%22100%22 rx=%2220%22 fill=%22%23e11d48%22/%3E%3Cpath fill=%22%23ffffff%22 d=%22M 100,5 C 45,5 5,25 5,50 C 5,75 45,95 100,95 C 155,95 195,75 195,50 C 195,25 155,5 100,5 Z M 100,12 C 150,12 187,30 187,50 C 187,70 150,88 100,88 C 50,88 13,70 13,50 C 13,30 50,12 100,12 Z M42,32 H65 C72,32 76,35 76,40 C76,44 73,46 68,47 C74,48 78,51 78,57 C78,63 73,67 65,67 H42 V32 Z M50,38 V46 H63 C67,46 69,44 69,42 C69,40 67,38 63,38 H50 Z M50,52 V61 H64 C68,61 70,59 70,56 C70,53 68,52 64,52 H50 Z M85,32 H94 L101,48 L108,32 H117 L105,53 V67 H97 V53 Z M125,32 H143 C156,32 163,40 163,50 C163,60 156,67 143,67 H125 V32 Z M133,38 V61 H142 C150,61 154,56 154,50 C154,43 150,38 142,38 H133 Z%22/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+
+    <!-- ===== PWA META TAGS ===== -->
+    <link href="https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png" rel="apple-touch-icon"/>
+    <meta content="#6366f1" name="theme-color"/>
+    <meta content="yes" name="mobile-web-app-capable"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="Gaji BYD" name="apple-mobile-web-app-title"/>
+    <link href="./manifest.json" rel="manifest"/>
+
+    <title>Kalkulator Gaji & Lembur - PT BYD Auto Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link as="image" href="https://res.cloudinary.com/zjaiuouq/image/upload/v1789490336/IMG_20250928_184115.webp" rel="preload"/>
+    <link crossorigin="anonymous" href="https://res.cloudinary.com" rel="preconnect"/>
+    <link href="https://res.cloudinary.com" rel="dns-prefetch"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Poppins', 'sans-serif'] } } } }
+    </script>
+    <style>
+body{font-family:'Poppins',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background 0.3s ease,color 0.3s ease}.ios-card{background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(226,232,240,0.8);transition:background 0.3s ease,border-color 0.3s ease}.ios-input{background-color:#f8fafc;border:1px solid #e2e8f0;transition:all 0.15s ease-in-out}.ios-input:focus{background-color:#fff;border-color:#007aff;box-shadow:0 0 0 3px rgba(0,122,255,0.15);outline:none}.accordion-content{max-height:0;overflow:hidden;transition:max-height 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease-in-out;opacity:0}.accordion-content.active{max-height:400px;opacity:1}.accordion-content.accordion-tall.active{max-height:2200px}.animated-welcome-bg{background:linear-gradient(-45deg,#0f172a,#1e1b4b,#881337,#311042,#0284c7);background-size:400% 400%;animation:gradientBG 10s ease infinite}@keyframes gradientBG{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}@media print{.no-print{display:none !important}body{background:white !important;padding:0 !important}.ios-card{background:white !important;border:1px solid #cbd5e1 !important;box-shadow:none !important;backdrop-filter:none !important}}body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}input,textarea{-webkit-user-select:text !important;user-select:text !important}.tabular-nums{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.profile-modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;padding:20px}.profile-modal-overlay.active{opacity:1;pointer-events:auto}.card-container{width:320px;height:520px;perspective:1000px;position:relative}.profile-card{position:relative;width:100%;height:100%;border-radius:28px;box-shadow:0 15px 35px rgba(0,0,0,0.25);outline:4px solid rgba(255,255,255,0.8);transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1)}.profile-card.flipped{transform:rotateY(180deg)}.card-front,.card-back{position:absolute;width:100%;height:100%;border-radius:28px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}.card-front{background-color:#121826;transform:translateZ(0);-webkit-mask-image:-webkit-radial-gradient(white,black)}.profile-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transform:scale(1.04)}.card-close-btn{position:absolute;top:14px;right:14px;z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.35);color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.2s ease;box-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:13px;padding:0;line-height:1}.card-close-btn:hover{background:rgba(0,0,0,0.6);transform:scale(1.08)}.card-close-btn:active{transform:scale(0.95)}.glass-overlay{position:absolute;bottom:0;left:0;width:100%;padding:55px 20px 24px 20px;color:#fff;z-index:2}.glass-overlay::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.28);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);-webkit-mask-image:linear-gradient(to top,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(to top,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 100%);z-index:-1}.name-container{display:flex;align-items:center;gap:6px;margin-bottom:6px}.name{font-size:1.25rem;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.3);font-family:'Inter',sans-serif}.verified-icon{background-color:#fff;color:#000;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px}.bio{font-size:0.875rem;color:rgba(255,255,255,0.95);line-height:1.4;margin-bottom:20px;text-shadow:0 1px 2px rgba(0,0,0,0.3);font-family:'Inter',sans-serif}.card-footer{display:flex;align-items:center;justify-content:space-between}.stats{display:flex;align-items:center;gap:14px;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.95);text-shadow:0 1px 2px rgba(0,0,0,0.3);font-family:'Inter',sans-serif}.stat-item{display:flex;align-items:center;gap:6px}.stat-item i{font-size:0.85rem;opacity:0.9}.actions-group{display:flex;align-items:center;gap:8px}.btn-follow{background-color:#fff;color:#111827;border:none;padding:8px 18px;border-radius:20px;font-size:0.875rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15);font-family:'Inter',sans-serif}.btn-follow:hover{background-color:#f3f4f6;transform:translateY(-1px)}.btn-flip{background-color:#fff;color:#111827;border:none;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.875rem;cursor:pointer;transition:all 0.2s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15)}.btn-flip:hover{background-color:#f3f4f6;transform:translateY(-1px)}.card-back{background-color:#121826;color:#fff;transform:rotateY(180deg);padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;font-family:'Inter',sans-serif}.back-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.back-title{font-size:1.15rem;font-weight:700;color:#fff;font-family:'Inter',sans-serif}.btn-close{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.85rem;transition:all 0.2s ease}.btn-close:hover{background:rgba(255,255,255,0.25);transform:scale(1.08)}.projects-list{display:flex;flex-direction:column;gap:10px;flex-grow:1;overflow-y:auto;padding-right:2px}.projects-list::-webkit-scrollbar{width:4px}.projects-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:4px}.project-card{background-color:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;transition:all 0.2s ease}.project-card:hover{background-color:rgba(255,255,255,0.1);transform:translateY(-2px)}.project-left{display:flex;align-items:center;gap:12px}.project-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;color:#fff;flex-shrink:0}.icon-blue{background:#2563eb}.icon-green{background:#10b981}.icon-purple{background:#8b5cf6}.icon-orange{background:#f97316}.icon-cyan{background:#06b6d4}.project-info{display:flex;flex-direction:column}.project-name{font-size:0.9rem;font-weight:600;color:#fff}.project-desc{font-size:0.72rem;color:#9ca3af;margin-top:2px}.external-link-icon{color:#6b7280;font-size:0.8rem}.back-footer-text{text-align:center;font-size:0.75rem;color:#6b7280;margin-top:12px}a{text-decoration:none}input[type="number"]::placeholder{color:#cbd5e1;opacity:1;font-weight:500}input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type="number"]{-moz-appearance:textfield}
+body.main-active{justify-content:flex-start !important;overflow-y:auto !important;overflow-x:hidden !important;min-height:100vh;align-items:stretch;-webkit-overflow-scrolling:touch;padding-bottom:110px !important}
+body.scroll-locked{position:fixed !important;width:100% !important;overflow:hidden !important;top:0;left:0;right:0}
+#mainHeader{position:sticky;top:0;z-index:40;padding:10px 12px;margin:0 -12px;transition:background 0.35s ease,backdrop-filter 0.35s ease,box-shadow 0.35s ease,padding 0.35s ease,margin 0.35s ease;background:transparent}
+#mainHeader.scrolled{background:rgba(255,255,255,0.82);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:0 4px 20px -8px rgba(15,23,42,0.12);padding:8px 12px}
+html.dark-mode #mainHeader.scrolled{background:rgba(15,23,42,0.82);box-shadow:0 4px 20px -8px rgba(0,0,0,0.5)}
+#mainHeader .header-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;max-width:72rem;margin:0 auto}
+#mainHeader.scrolled .header-logo{width:2rem;height:2rem;border-radius:0.75rem}
+#mainHeader.scrolled .header-logo svg{width:1rem;height:1rem}
+#mainHeader.scrolled h1{font-size:0.875rem}
+#mainHeader.scrolled .header-subtitle{font-size:0.65rem}
+#mainHeader.scrolled .header-btn{padding:0.375rem}
+#mainHeader.scrolled .header-btn svg{width:0.875rem;height:0.875rem}
+#mainHeader .header-logo,#mainHeader h1,#mainHeader .header-subtitle,#mainHeader .header-btn{transition:all 0.35s cubic-bezier(0.16, 1, 0.3, 1)}
+#mainContent:not(.revealed) #mainHeader{opacity:0;pointer-events:none}
+#mainContent.revealed #mainHeader{opacity:1;pointer-events:auto;transition:opacity 0.6s ease}
+#mainContent{opacity:0;transition:opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)}
+#mainContent.revealed{opacity:1}
+#welcomeOverlay.leaving{opacity:0;pointer-events:none;transition:opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1)}
+#welcomeOverlay .welcome-card{transition:transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1)}
+#welcomeOverlay.leaving .welcome-card{transform:translate3d(0, -12px, 0) scale(0.97);opacity:0.6}
+.scroll-reveal{opacity:0;transform:translate3d(0, 24px, 0);transition:opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),transform 1s cubic-bezier(0.16, 1, 0.3, 1);will-change:opacity, transform;backface-visibility:hidden}
+.scroll-reveal.in-view{opacity:1;transform:translate3d(0, 0, 0)}
+.scroll-reveal.in-view.done{will-change:auto}
+.tutorial-body{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.scrollbar-hide::-webkit-scrollbar{display:none}
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+.tab-page{display:none}
+.tab-page.active{display:block;animation:fadeIn 0.4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CAPSULE NAVBAR */
+.capsule-nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateZ(0);z-index:55;display:none;align-items:center;gap:2px;padding:6px;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(226,232,240,0.9);border-radius:999px;box-shadow:0 4px 16px -8px rgba(15,23,42,0.15);overflow:hidden;transition:background 0.3s ease,border-color 0.3s ease}
+body.main-active .capsule-nav{display:flex}
+.capsule-slider{position:absolute;top:6px;left:0;height:44px;width:44px;border-radius:999px;background:linear-gradient(135deg,#6366f1,#8b5cf6);transition:transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),width 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);z-index:1;pointer-events:none;will-change:transform,width}
+.capsule-item{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:0;width:44px;height:44px;border-radius:999px;background:transparent;border:none;color:#64748b;cursor:pointer;transition:width 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),color 0.4s ease;font-family:inherit;flex-shrink:0;padding:0}
+.capsule-item svg{width:19px;height:19px;flex-shrink:0;transition:color 0.3s ease,transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform,color;transform-origin:center}
+.capsule-item.active svg{transform:scale(1.08)}
+.capsule-item:not(.active) svg.pill-over{color:#fff !important;transform:scale(1.14)}
+.capsule-item .label{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;font-size:11.5px;font-weight:600;letter-spacing:0.02em;transition:max-width 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),opacity 0.45s ease 0.08s,margin-left 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);margin-left:0}
+.capsule-item:hover:not(.active){color:#4f46e5}
+.capsule-item.active{color:white;width:88px}
+.capsule-item.active .label{max-width:62px;opacity:1;margin-left:5px}
+html.dark-mode .capsule-nav{background:rgba(30,41,59,0.92);border-color:rgba(51,65,85,0.9);box-shadow:0 4px 16px -8px rgba(0,0,0,0.5)}
+html.dark-mode .capsule-item{color:#e2e8f0}
+html.dark-mode .capsule-item:hover:not(.active){color:#ffffff}
+html.dark-mode .capsule-item.active{color:#ffffff}
+html.dark-mode .capsule-item .label{color:inherit}
+
+/* CHART */
+.chart-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.chart-title-wrap{display:flex;align-items:center;gap:8px}
+.chart-range-toggle{display:inline-flex;gap:2px;padding:2px;background:#eef2ff;border-radius:8px;flex-shrink:0}
+.chart-range-btn{padding:4px 9px;font-size:10px;font-weight:700;border:none;background:transparent;color:#64748b;border-radius:6px;cursor:pointer;font-family:inherit;transition:all 0.18s;letter-spacing:0.01em}
+.chart-range-btn.active{background:#fff;color:#6366f1;box-shadow:0 1px 3px rgba(99,102,241,0.2)}
+html.dark-mode .chart-range-toggle{background:rgba(30,58,138,0.3)}
+html.dark-mode .chart-range-btn{color:#94a3b8}
+html.dark-mode .chart-range-btn.active{background:#1e293b;color:#818cf8;box-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.chart-container{position:relative;background:linear-gradient(180deg,rgba(99,102,241,0.04) 0%,transparent 100%);border-radius:12px;padding:8px 4px 4px;overflow:hidden}
+.chart-values{display:flex;justify-content:space-between;padding:0 8px;margin-bottom:2px}
+.chart-values span{font-size:9.5px;font-weight:700;color:#94a3b8;flex:1;text-align:center}
+.chart-values span.latest{color:#10b981}
+.chart-values.compact span{font-size:8px}
+.chart-svg{width:100%;height:120px;display:block}
+.chart-svg .grid-line{stroke:#e2e8f0;stroke-width:1;stroke-dasharray:2,3}
+.chart-svg .line-area{fill:url(#lineGradient)}
+.chart-svg .line-stroke{fill:none;stroke:#6366f1;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.chart-svg .line-dot{fill:#fff;stroke:#6366f1;stroke-width:2.5}
+.chart-svg .line-dot.latest{fill:#10b981;stroke:#10b981}
+.chart-labels{display:flex;justify-content:space-between;padding:6px 8px 0}
+.chart-labels span{font-size:9.5px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em;flex:1;text-align:center}
+.chart-labels.compact span{font-size:8px}
+html.dark-mode .chart-values span{color:#64748b}
+html.dark-mode .chart-values span.latest{color:#34d399}
+html.dark-mode .chart-svg .grid-line{stroke:#334155}
+html.dark-mode .chart-svg .line-stroke{stroke:#818cf8}
+html.dark-mode .chart-svg .line-dot{fill:#1e293b;stroke:#818cf8}
+html.dark-mode .chart-svg .line-dot.latest{fill:#34d399;stroke:#34d399}
+html.dark-mode .chart-labels span{color:#64748b}
+
+/* RIWAYAT LIST */
+.riwayat-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 15px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;transition:all 0.2s ease;cursor:pointer}
+.riwayat-item:hover{background:#f1f5f9;border-color:#cbd5e1;transform:translateY(-1px)}
+.riwayat-item:active{transform:scale(0.99)}
+.riwayat-item-date{font-size:12.5px;font-weight:700;color:#334155;letter-spacing:-0.01em;flex:1;min-width:0}
+.riwayat-item-netto{font-size:14px;font-weight:800;color:#10b981;font-variant-numeric:tabular-nums;letter-spacing:-0.01em;flex-shrink:0}
+.riwayat-item-chevron{width:16px;height:16px;color:#cbd5e1;flex-shrink:0;transition:color 0.2s ease}
+.riwayat-item:hover .riwayat-item-chevron{color:#6366f1}
+html.dark-mode .riwayat-item{background:rgba(15,23,42,0.5);border-color:rgba(51,65,85,0.7)}
+html.dark-mode .riwayat-item:hover{background:rgba(30,41,59,0.8);border-color:rgba(71,85,105,0.8)}
+html.dark-mode .riwayat-item-date{color:#e2e8f0}
+html.dark-mode .riwayat-item-chevron{color:#475569}
+html.dark-mode .riwayat-item:hover .riwayat-item-chevron{color:#818cf8}
+
+/* RIWAYAT MODAL */
+.riwayat-modal-overlay{position:fixed;inset:0;z-index:105;background:rgba(15,23,42,0.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;padding:80px 0 0 0}
+@media(min-width:640px){.riwayat-modal-overlay{align-items:center;padding:20px}}
+.riwayat-modal-overlay.active{opacity:1;pointer-events:auto}
+.riwayat-modal-card{background:#fff;width:100%;max-width:460px;max-height:100%;border-radius:24px 24px 0 0;display:flex;flex-direction:column;transform:translateY(40px);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);overflow:hidden;box-shadow:0 -20px 40px -10px rgba(0,0,0,0.3);position:relative}
+@media(min-width:640px){.riwayat-modal-card{max-height:88dvh;border-radius:24px;transform:scale(0.94);box-shadow:0 20px 60px -10px rgba(0,0,0,0.4)}}
+@supports not (max-height:88dvh){@media(min-width:640px){.riwayat-modal-card{max-height:88vh}}}
+.riwayat-modal-overlay.active .riwayat-modal-card{transform:translateY(0)}
+@media(min-width:640px){.riwayat-modal-overlay.active .riwayat-modal-card{transform:scale(1)}}
+.riwayat-modal-drag{width:36px;height:4px;background:#cbd5e1;border-radius:99px;margin:8px auto 0;flex-shrink:0}
+@media(min-width:640px){.riwayat-modal-drag{display:none}}
+.riwayat-modal-header{padding:14px 20px 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-shrink:0;background:#fff;position:relative;z-index:2}
+.riwayat-modal-label{font-size:10px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:0.08em}
+.riwayat-modal-date{font-size:18px;font-weight:800;color:#0f172a;letter-spacing:-0.02em;margin-top:2px}
+.riwayat-modal-close{width:36px;height:36px;border-radius:50%;background:#f1f5f9;border:none;color:#475569;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;padding:0}
+.riwayat-modal-close:hover{background:#e2e8f0;color:#0f172a}
+.riwayat-modal-close:active{transform:scale(0.92)}
+.riwayat-modal-close svg{width:18px;height:18px}
+.riwayat-modal-netto-wrap{margin:0 20px 12px;padding:14px 16px;background:linear-gradient(135deg,#059669,#10b981);border-radius:14px;color:#fff;flex-shrink:0;box-shadow:0 6px 18px -6px rgba(16,185,129,0.5)}
+.riwayat-modal-netto-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;opacity:0.9}
+.riwayat-modal-netto{font-size:26px;font-weight:800;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;margin-top:2px}
+.riwayat-modal-body{padding:0 20px 16px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.riwayat-modal-body::-webkit-scrollbar{width:4px}
+.riwayat-modal-body::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.riwayat-modal-footer{padding:12px 20px 16px;border-top:1px solid #f1f5f9;flex-shrink:0;background:#fff}
+.rm-section{margin-bottom:10px;border:1px solid #f1f5f9;border-radius:12px;overflow:hidden}
+.rm-section-head{padding:9px 12px;background:#f8fafc;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.04em;display:flex;align-items:center;gap:6px}
+.rm-section-head svg{width:13px;height:13px}
+.rm-section-body{padding:4px 12px 8px}
+.rm-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;font-size:12px;border-bottom:1px solid #f8fafc}
+.rm-row:last-child{border-bottom:none}
+.rm-row-label{color:#64748b;font-weight:500}
+.rm-row-val{color:#1e293b;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.rm-row-val.rose{color:#e11d48}
+.rm-row-val.emerald{color:#059669}
+.rm-row-val.indigo{color:#6366f1}
+.rm-row-total{padding-top:8px;margin-top:4px;border-top:1.5px dashed #e2e8f0;font-weight:800}
+.rm-summary{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border:none;padding:14px 16px;border-radius:14px;margin-bottom:4px}
+.rm-summary .rm-row{border-color:rgba(255,255,255,0.08)}
+.rm-summary .rm-row-label{color:#94a3b8}
+.rm-summary .rm-row-val{color:#e2e8f0}
+.rm-summary .rm-row-val.emerald{color:#34d399}
+.rm-summary .rm-row-val.rose{color:#fb7185}
+.rm-empty{padding:14px;text-align:center;color:#94a3b8;font-size:11px;font-style:italic}
+.rm-delete-btn{width:100%;padding:11px;background:#fef2f2;color:#e11d48;font-size:12px;font-weight:700;border:1px solid #fecaca;border-radius:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all 0.2s}
+.rm-delete-btn:hover{background:#fee2e2}
+.rm-delete-btn svg{width:14px;height:14px}
+html.dark-mode .riwayat-modal-card{background:#1e293b}
+html.dark-mode .riwayat-modal-drag{background:#475569}
+html.dark-mode .riwayat-modal-header{background:#1e293b}
+html.dark-mode .riwayat-modal-date{color:#f1f5f9}
+html.dark-mode .riwayat-modal-close{background:#334155;color:#94a3b8}
+html.dark-mode .riwayat-modal-close:hover{background:#475569;color:#e2e8f0}
+html.dark-mode .riwayat-modal-footer{border-color:rgba(51,65,85,0.6);background:#1e293b}
+html.dark-mode .rm-section{border-color:rgba(51,65,85,0.6)}
+html.dark-mode .rm-section-head{background:rgba(15,23,42,0.5);color:#94a3b8}
+html.dark-mode .rm-row{border-color:rgba(51,65,85,0.4)}
+html.dark-mode .rm-row-label{color:#94a3b8}
+html.dark-mode .rm-row-val{color:#e2e8f0}
+html.dark-mode .rm-row-val.rose{color:#fb7185}
+html.dark-mode .rm-row-val.emerald{color:#34d399}
+html.dark-mode .rm-row-val.indigo{color:#818cf8}
+html.dark-mode .rm-row-total{border-color:rgba(51,65,85,0.7)}
+html.dark-mode .rm-delete-btn{background:rgba(159,18,57,0.15);color:#fb7185;border-color:rgba(159,18,57,0.4)}
+html.dark-mode .rm-delete-btn:hover{background:rgba(159,18,57,0.3)}
+html.dark-mode .rm-empty{color:#64748b}
+
+/* SIMPAN MODAL */
+.simpan-modal-overlay{position:fixed;inset:0;z-index:108;background:rgba(15,23,42,0.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;padding:70px 0 0 0}
+@media(min-width:640px){.simpan-modal-overlay{align-items:center;padding:20px}}
+.simpan-modal-overlay.active{opacity:1;pointer-events:auto}
+.simpan-modal-card{background:#fff;width:100%;max-width:430px;max-height:100%;border-radius:24px 24px 0 0;display:flex;flex-direction:column;transform:translateY(40px);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);overflow:hidden;box-shadow:0 -20px 40px -10px rgba(0,0,0,0.3);position:relative}
+@media(min-width:640px){.simpan-modal-card{border-radius:24px;transform:scale(0.94);box-shadow:0 20px 60px -10px rgba(0,0,0,0.4)}}
+.simpan-modal-overlay.active .simpan-modal-card{transform:translateY(0)}
+@media(min-width:640px){.simpan-modal-overlay.active .simpan-modal-card{transform:scale(1)}}
+.simpan-modal-header{padding:16px 20px 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-shrink:0;background:#fff;border-bottom:1px solid #f1f5f9}
+.simpan-header-left{display:flex;gap:12px;align-items:flex-start;min-width:0}
+.simpan-header-icon{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -3px rgba(99,102,241,0.5)}
+.simpan-header-icon svg{width:18px;height:18px}
+.simpan-header-title{font-size:15px;font-weight:800;color:#0f172a;letter-spacing:-0.02em;line-height:1.2}
+.simpan-header-sub{font-size:10.5px;color:#64748b;margin-top:3px;line-height:1.4}
+.simpan-modal-close{width:32px;height:32px;border-radius:50%;background:#f1f5f9;border:none;color:#64748b;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;padding:0}
+.simpan-modal-close:hover{background:#e2e8f0;color:#334155}
+.simpan-modal-close:active{transform:scale(0.92)}
+.simpan-modal-close svg{width:16px;height:16px}
+.simpan-modal-body{padding:16px 20px 18px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.simpan-section-label{font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.simpan-section-label svg{width:11px;height:11px;color:#6366f1}
+.simpan-field-row{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;margin-bottom:16px}
+.simpan-field{position:relative}
+.simpan-field select{width:100%;padding:12px 34px 12px 13px;font-family:inherit;font-size:13px;font-weight:700;color:#1e293b;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:11px;cursor:pointer;outline:none;transition:all 0.2s;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.simpan-field select:focus{border-color:#6366f1;background-color:#fff;box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
+.simpan-preview{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:14px;position:relative;overflow:hidden}
+.simpan-preview::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#6366f1,#8b5cf6)}
+.simpan-preview-title{font-size:10px;font-weight:800;color:#6366f1;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:11px;display:flex;align-items:center;gap:6px}
+.simpan-preview-title svg{width:12px;height:12px}
+.simpan-preview-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0;color:#64748b}
+.simpan-preview-row span:last-child{font-weight:700;color:#1e293b;font-variant-numeric:tabular-nums}
+.simpan-preview-row.total{padding-top:10px;margin-top:6px;border-top:1.5px dashed #cbd5e1;font-size:13px;font-weight:700}
+.simpan-preview-row.total span:last-child{color:#10b981;font-size:15px}
+.simpan-note{padding:11px 13px;background:#eff6ff;border:1px solid #dbeafe;border-radius:11px;font-size:11.5px;color:#1e40af;line-height:1.5;display:flex;gap:8px;align-items:flex-start}
+.simpan-note svg{width:14px;height:14px;flex-shrink:0;margin-top:1px;color:#3b82f6}
+.simpan-note b{font-weight:800;color:#1e3a8a}
+.simpan-note.warning{background:#fef3c7;border-color:#fde68a;color:#78350f}
+.simpan-note.warning svg{color:#d97706}
+.simpan-note.warning b{color:#78350f}
+.simpan-modal-footer{padding:14px 20px 18px;display:flex;gap:8px;border-top:1px solid #f1f5f9;flex-shrink:0;background:#fff}
+.simpan-btn-cancel{flex:1;padding:13px;font-family:inherit;font-size:13px;font-weight:700;color:#475569;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all 0.2s}
+.simpan-btn-cancel:hover{background:#e2e8f0}
+.simpan-btn-cancel:active{transform:scale(0.98)}
+.simpan-btn-confirm{flex:1.6;padding:13px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:12px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 12px -3px rgba(99,102,241,0.5);display:flex;align-items:center;justify-content:center;gap:7px}
+.simpan-btn-confirm:hover{filter:brightness(1.08)}
+.simpan-btn-confirm:active{transform:scale(0.98)}
+.simpan-btn-confirm svg{width:14px;height:14px}
+html.dark-mode .simpan-modal-card{background:#1e293b}
+html.dark-mode .simpan-modal-header{background:#1e293b;border-color:rgba(51,65,85,0.6)}
+html.dark-mode .simpan-header-title{color:#f1f5f9}
+html.dark-mode .simpan-header-sub{color:#94a3b8}
+html.dark-mode .simpan-modal-close{background:#334155;color:#94a3b8}
+html.dark-mode .simpan-modal-close:hover{background:#475569;color:#e2e8f0}
+html.dark-mode .simpan-section-label{color:#94a3b8}
+html.dark-mode .simpan-field select{background-color:#0f172a;border-color:#334155;color:#e2e8f0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")}
+html.dark-mode .simpan-field select:focus{background-color:#020617;border-color:#818cf8}
+html.dark-mode .simpan-preview{background:rgba(15,23,42,0.6);border-color:#334155}
+html.dark-mode .simpan-preview-row{color:#94a3b8}
+html.dark-mode .simpan-preview-row span:last-child{color:#e2e8f0}
+html.dark-mode .simpan-preview-row.total{border-color:#475569}
+html.dark-mode .simpan-preview-row.total span:last-child{color:#34d399}
+html.dark-mode .simpan-note{background:rgba(30,58,138,0.3);border-color:rgba(30,58,138,0.5);color:#93c5fd}
+html.dark-mode .simpan-note svg{color:#60a5fa}
+html.dark-mode .simpan-note b{color:#bfdbfe}
+html.dark-mode .simpan-note.warning{background:rgba(120,53,15,0.3);border-color:rgba(120,53,15,0.5);color:#fbbf24}
+html.dark-mode .simpan-note.warning svg{color:#f59e0b}
+html.dark-mode .simpan-note.warning b{color:#fcd34d}
+html.dark-mode .simpan-modal-footer{border-color:rgba(51,65,85,0.6);background:#1e293b}
+html.dark-mode .simpan-btn-cancel{background:#334155;border-color:#475569;color:#cbd5e1}
+html.dark-mode .simpan-btn-cancel:hover{background:#475569}
+
+/* SETTING MINIMALIS */
+.setting-group{background:#fff;border:1px solid #f1f5f9;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(15,23,42,0.03)}
+.setting-row{display:flex;align-items:center;gap:13px;padding:15px 16px;border-bottom:1px solid #f8fafc;cursor:pointer;transition:background 0.15s ease;background:transparent;border-left:none;border-right:none;border-top:none;width:100%;font-family:inherit;text-align:left}
+.setting-row:last-child{border-bottom:none}
+.setting-row:hover{background:#fafbfc}
+.setting-row:active{background:#f1f5f9}
+.setting-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.setting-icon svg{width:16px;height:16px}
+.setting-icon.indigo{background:#eef2ff;color:#6366f1}
+.setting-icon.rose{background:#fef2f2;color:#e11d48}
+.setting-text{flex:1;min-width:0}
+.setting-title{font-size:13px;font-weight:600;color:#0f172a;letter-spacing:-0.01em;line-height:1.3}
+.setting-sub{font-size:10.5px;color:#94a3b8;margin-top:2px;line-height:1.3}
+.setting-chevron{width:16px;height:16px;color:#cbd5e1;flex-shrink:0}
+.setting-toggle{width:42px;height:24px;border-radius:99px;background:#e2e8f0;position:relative;flex-shrink:0;transition:background 0.25s ease;border:none;padding:0;cursor:pointer}
+.setting-toggle::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:transform 0.25s cubic-bezier(0.4,0,0.2,1)}
+.setting-toggle.on{background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.setting-toggle.on::after{transform:translateX(18px)}
+.setting-footer{text-align:center;padding:14px 0 4px}
+.setting-version{font-size:11px;color:#94a3b8;font-weight:500;letter-spacing:0.01em}
+.setting-version b{color:#475569;font-weight:700}
+html.dark-mode .setting-group{background:rgba(30,41,59,0.6);border-color:rgba(51,65,85,0.6);box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+html.dark-mode .setting-row{border-color:rgba(51,65,85,0.4)}
+html.dark-mode .setting-row:hover{background:rgba(51,65,85,0.25)}
+html.dark-mode .setting-row:active{background:rgba(51,65,85,0.45)}
+html.dark-mode .setting-icon.indigo{background:rgba(99,102,241,0.2);color:#a5b4fc}
+html.dark-mode .setting-icon.rose{background:rgba(244,63,94,0.15);color:#fb7185}
+html.dark-mode .setting-title{color:#e2e8f0}
+html.dark-mode .setting-sub{color:#64748b}
+html.dark-mode .setting-chevron{color:#475569}
+html.dark-mode .setting-toggle{background:#334155}
+html.dark-mode .setting-version{color:#64748b}
+html.dark-mode .setting-version b{color:#94a3b8}
+
+/* TOAST */
+.byd-toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);padding:12px 20px;background:rgba(15,23,42,0.95);color:#fff;font-size:12.5px;font-weight:600;border-radius:12px;box-shadow:0 10px 30px -10px rgba(0,0,0,0.5);z-index:120;opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s cubic-bezier(0.16,1,0.3,1);max-width:calc(100vw - 40px);text-align:center;line-height:1.4}
+.byd-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.byd-toast.success{background:linear-gradient(135deg,#059669,#10b981)}
+.byd-toast.error{background:linear-gradient(135deg,#dc2626,#ef4444)}
+html.dark-mode .byd-toast{background:rgba(30,41,59,0.98);border:1px solid rgba(51,65,85,0.8)}
+
+/* RANGE SLIDER */
+input[type=range].range-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:linear-gradient(90deg,#6366f1 0%,#6366f1 var(--range-progress,50%),#e2e8f0 var(--range-progress,50%),#e2e8f0 100%);outline:none;cursor:pointer}
+input[type=range].range-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:white;border:3px solid #6366f1;box-shadow:0 2px 8px rgba(99,102,241,0.4);cursor:grab}
+input[type=range].range-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:white;border:3px solid #6366f1;box-shadow:0 2px 8px rgba(99,102,241,0.4);cursor:grab}
+html.dark-mode input[type=range].range-slider{background:linear-gradient(90deg,#818cf8 0%,#818cf8 var(--range-progress,50%),#334155 var(--range-progress,50%),#334155 100%)}
+
+/* LIGHTBOX */
+.lightbox-overlay{position:fixed;inset:0;z-index:110;background:rgba(2,6,23,0.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.lightbox-overlay.active{opacity:1;pointer-events:auto}
+.lightbox-toolbar{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:linear-gradient(to bottom,rgba(2,6,23,0.85),transparent);transform:translateY(-100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.lightbox-overlay.active .lightbox-toolbar{transform:translateY(0)}
+.lightbox-title{display:flex;align-items:center;gap:8px;color:#f1f5f9;font-size:12px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lightbox-title svg{width:16px;height:16px;color:#34d399;flex-shrink:0}
+.lightbox-actions{display:flex;align-items:center;gap:6px}
+.lightbox-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);color:#f1f5f9;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0;flex-shrink:0}
+.lightbox-btn:hover{background:rgba(255,255,255,0.25);transform:scale(1.08)}
+.lightbox-btn svg{width:18px;height:18px}
+.lightbox-btn-close{background:rgba(244,63,94,0.25);border-color:rgba(244,63,94,0.5)}
+.lightbox-btn-close:hover{background:rgba(244,63,94,0.55)}
+.lightbox-stage{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:60px 8px 40px;touch-action:none;cursor:grab}
+.lightbox-img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transform-origin:center center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);will-change:transform;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.lightbox-img.no-transition{transition:none}
+.lightbox-hint{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:14px 12px 20px;color:rgba(241,245,249,0.55);font-size:10.5px;font-weight:500;background:linear-gradient(to top,rgba(2,6,23,0.85),transparent);pointer-events:none;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.lightbox-overlay.active .lightbox-hint{transform:translateY(0)}
+@media (max-width:480px){.lightbox-title span{display:none}.lightbox-btn{width:34px;height:34px}.lightbox-btn svg{width:16px;height:16px}.lightbox-hint{font-size:9.5px;padding:12px 8px 16px}.capsule-nav{bottom:14px;padding:5px;gap:2px}.capsule-slider{height:42px;width:42px;top:5px}.capsule-item{width:42px;height:42px}.capsule-item.active{width:84px}.capsule-item.active .label{font-size:11px;max-width:58px}body.main-active{padding-bottom:100px !important}}
+
+/* PTKP DROPDOWN */
+.ptkp-wrapper{position:relative;width:100%;max-width:195px}
+.ptkp-trigger{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;padding:8px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:11px;font-weight:600;color:#1e293b;cursor:pointer;transition:all 0.2s ease;text-align:left}
+.ptkp-trigger:hover{background:#f1f5f9;border-color:#cbd5e1}
+.ptkp-trigger:focus,.ptkp-trigger.open{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15);background:#fff}
+.ptkp-trigger .ptkp-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptkp-trigger .ptkp-chevron{width:14px;height:14px;color:#94a3b8;flex-shrink:0;transition:transform 0.25s ease}
+.ptkp-trigger.open .ptkp-chevron{transform:rotate(180deg);color:#3b82f6}
+.ptkp-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px -8px rgba(15,23,42,0.18);z-index:50;overflow:hidden;padding:4px;opacity:0;transform:translateY(-6px) scale(0.98);pointer-events:none;transition:opacity 0.18s ease,transform 0.18s ease;max-height:280px;overflow-y:auto}
+.ptkp-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.ptkp-option{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;font-size:11px;font-weight:500;color:#334155;border-radius:8px;cursor:pointer;transition:all 0.12s ease;user-select:none}
+.ptkp-option:hover{background:#f1f5f9;color:#0f172a}
+.ptkp-option.selected{background:#eff6ff;color:#1d4ed8;font-weight:600}
+.ptkp-option.selected::after{content:"";width:14px;height:14px;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4ed8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center}
+html.dark-mode .ptkp-trigger{background:#1e293b;border-color:#334155;color:#f1f5f9}
+html.dark-mode .ptkp-trigger:hover{background:#334155}
+html.dark-mode .ptkp-trigger:focus,html.dark-mode .ptkp-trigger.open{background:#0f172a;border-color:#3b82f6}
+html.dark-mode .ptkp-panel{background:#1e293b;border-color:#334155}
+html.dark-mode .ptkp-option{color:#cbd5e1}
+html.dark-mode .ptkp-option:hover{background:#334155;color:#f1f5f9}
+html.dark-mode .ptkp-option.selected{background:rgba(30,58,138,0.4);color:#93c5fd}
+html.dark-mode .ptkp-option.selected::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393c5fd' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E")}
+
+/* DARK MODE */
+html.dark-mode body{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%) !important;color:#e2e8f0 !important}
+html.dark-mode header h1,html.dark-mode .text-slate-900,html.dark-mode .text-slate-800{color:#f1f5f9 !important}
+html.dark-mode .text-slate-700,html.dark-mode .text-slate-600{color:#cbd5e1 !important}
+html.dark-mode .text-slate-500,html.dark-mode .text-slate-400{color:#94a3b8 !important}
+html.dark-mode .ios-card{background:rgba(30,41,59,0.92) !important;border-color:rgba(51,65,85,0.7) !important;box-shadow:0 4px 20px rgba(0,0,0,0.3) !important}
+html.dark-mode .ios-input{background-color:#1e293b !important;border-color:#334155 !important;color:#f1f5f9 !important}
+html.dark-mode .ios-input:focus{background-color:#0f172a !important;border-color:#3b82f6 !important}
+html.dark-mode .bg-white,html.dark-mode .bg-white\/90,html.dark-mode .bg-white\/88{background:#1e293b !important;color:#f1f5f9 !important}
+html.dark-mode .bg-slate-50,html.dark-mode .bg-slate-50\/80,html.dark-mode .bg-slate-50\/60,html.dark-mode .bg-slate-50\/50,html.dark-mode .bg-slate-100{background:rgba(15,23,42,0.6) !important}
+html.dark-mode .bg-blue-50,html.dark-mode .bg-blue-50\/50,html.dark-mode .bg-blue-50\/30,html.dark-mode .bg-blue-50\/70{background:rgba(30,58,138,0.25) !important}
+html.dark-mode .bg-indigo-50{background:rgba(49,46,129,0.3) !important}
+html.dark-mode .bg-purple-50\/50,html.dark-mode .bg-purple-50\/30{background:rgba(76,29,149,0.25) !important}
+html.dark-mode .bg-emerald-50,html.dark-mode .bg-emerald-50\/70{background:rgba(6,78,59,0.3) !important}
+html.dark-mode .bg-rose-50,html.dark-mode .bg-rose-50\/70{background:rgba(159,18,57,0.2) !important}
+html.dark-mode .bg-amber-50,html.dark-mode .bg-amber-50\/70{background:rgba(120,53,15,0.25) !important}
+html.dark-mode .border-slate-100,html.dark-mode .border-slate-100\/80,html.dark-mode .border-slate-200,html.dark-mode .border-slate-200\/80,html.dark-mode .border-slate-200\/60{border-color:rgba(51,65,85,0.7) !important}
+html.dark-mode .divide-slate-100\/80 > :not([hidden]) ~ :not([hidden]){border-color:rgba(51,65,85,0.5) !important}
+html.dark-mode .border-blue-100\/80,html.dark-mode .border-blue-100,html.dark-mode .border-blue-200{border-color:rgba(30,58,138,0.5) !important}
+html.dark-mode .border-purple-100{border-color:rgba(76,29,149,0.5) !important}
+html.dark-mode .border-rose-100\/80{border-color:rgba(159,18,57,0.4) !important}
+html.dark-mode .border-amber-100\/80{border-color:rgba(120,53,15,0.5) !important}
+html.dark-mode .border-emerald-100{border-color:rgba(6,78,59,0.5) !important}
+html.dark-mode .hover\:bg-slate-50:hover,html.dark-mode .hover\:bg-slate-50\/60:hover,html.dark-mode .hover\:bg-slate-100:hover{background:rgba(30,41,59,0.8) !important}
+html.dark-mode .hover\:bg-purple-50\/30:hover{background:rgba(76,29,149,0.3) !important}
+html.dark-mode .hover\:bg-rose-50:hover{background:rgba(159,18,57,0.3) !important}
+html.dark-mode .text-blue-600{color:#60a5fa !important}
+html.dark-mode .text-blue-700,html.dark-mode .text-blue-800,html.dark-mode .text-blue-900{color:#93c5fd !important}
+html.dark-mode .text-emerald-600{color:#34d399 !important}
+html.dark-mode .text-emerald-700,html.dark-mode .text-emerald-800,html.dark-mode .text-emerald-900{color:#6ee7b7 !important}
+html.dark-mode .text-rose-700,html.dark-mode .text-rose-900,html.dark-mode .text-rose-600,html.dark-mode .text-rose-500,html.dark-mode .text-rose-400{color:#fb7185 !important}
+html.dark-mode .text-amber-900,html.dark-mode .text-amber-800{color:#fbbf24 !important}
+html.dark-mode .text-purple-600,html.dark-mode .text-purple-800{color:#c084fc !important}
+html.dark-mode .text-indigo-600{color:#818cf8 !important}
+html.dark-mode .bg-slate-900{background:#0f172a !important}
+html.dark-mode .lightbox-overlay{background:rgba(0,0,0,0.96)}
+html.dark-mode #welcomeBtn{background:#ffffff !important;color:#020617 !important}
+html.dark-mode #welcomeBtn span,html.dark-mode #welcomeBtn i,html.dark-mode #welcomeBtn svg{color:#020617 !important;stroke:#020617 !important}
+html.dark-mode #tutorialCard{background:#1e293b !important;color:#f1f5f9 !important}
+html.dark-mode #tutorialCard .tutorial-header{border-color:#334155 !important}
+html.dark-mode #tutorialCard .tutorial-body{background:#1e293b !important}
+html.dark-mode #tutorialCard .tutorial-footer{border-color:#334155 !important;background:#1e293b !important}
+html.dark-mode #tutorialCard .tutorial-title{color:#f1f5f9 !important}
+html.dark-mode #tutorialCard .tutorial-desc{color:#94a3b8 !important}
+html.dark-mode #tutorialCard .tutorial-step{background:rgba(15,23,42,0.6) !important;border-color:#334155 !important}
+html.dark-mode #tutorialCard .tutorial-step .step-title{color:#e2e8f0 !important}
+html.dark-mode #tutorialCard .tutorial-step .step-desc{color:#94a3b8 !important}
+html.dark-mode #tutorialCard .tutorial-step b{color:#f1f5f9 !important}
+html.dark-mode #tutorialCloseBtn{background:#334155 !important;color:#94a3b8 !important}
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50/40 text-slate-800 min-h-screen py-4 px-3 sm:px-6 selection:bg-blue-500 selection:text-white flex flex-col justify-center overflow-hidden">
+
+    <script>
+    (function(){ try{ if(localStorage.getItem('darkMode')==='1'){ document.documentElement.classList.add('dark-mode'); } }catch(e){} })();
+    </script>
+
+    <div class="fixed inset-0 z-50 animated-welcome-bg backdrop-blur-3xl flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-700 ease-in-out opacity-100 select-none" id="welcomeOverlay">
+        <div class="absolute w-72 h-72 bg-red-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="text-center mb-4 sm:mb-5 z-10"><p class="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-white/70 uppercase">PT BYD Auto Indonesia</p></div>
+        <div class="welcome-card relative max-w-xs sm:max-w-sm w-full bg-white/[0.07] border border-white/15 rounded-[40px] p-7 sm:p-8 flex flex-col items-center text-center shadow-2xl backdrop-blur-2xl overflow-hidden z-10">
+            <div class="w-9 h-1 bg-white/20 rounded-full mb-6"></div>
+            <div class="flex flex-col items-center mb-6">
+                <div class="w-20 h-20 rounded-[22px] bg-gradient-to-b from-red-600 to-red-700 border border-red-400/40 backdrop-blur-md flex items-center justify-center p-3.5 shadow-2xl shadow-black/50 mb-2.5">
+                <svg class="w-full h-auto text-white fill-current" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 100,5 C 45,5 5,25 5,50 C 5,75 45,95 100,95 C 155,95 195,75 195,50 C 195,25 155,5 100,5 Z M 100,12 C 150,12 187,30 187,50 C 187,70 150,88 100,88 C 50,88 13,70 13,50 C 13,30 50,12 100,12 Z"/>
+                <path d="M42,32 H65 C72,32 76,35 76,40 C76,44 73,46 68,47 C74,48 78,51 78,57 C78,63 73,67 65,67 H42 V32 Z M50,38 V46 H63 C67,46 69,44 69,42 C69,40 67,38 63,38 H50 Z M50,52 V61 H64 C68,61 70,59 70,56 C70,53 68,52 64,52 H50 Z"/>
+                <path d="M85,32 H94 L101,48 L108,32 H117 L105,53 V67 H97 V53 Z"/>
+                <path d="M125,32 H143 C156,32 163,40 163,50 C163,60 156,67 143,67 H125 V32 Z M133,38 V61 H142 C150,61 154,56 154,50 C154,43 150,38 142,38 H133 Z"/>
+                </svg>
+                </div>
+                <span class="text-[9px] font-bold tracking-[0.22em] uppercase" style="color:white;font-style:italic;">Build Your Dreams</span>
+            </div>
+            <div class="space-y-1.5 mb-7">
+                <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">Kalkulator Gaji &amp; Lembur</h1>
+                <p class="text-xs text-white/60 font-normal leading-relaxed max-w-[220px] mx-auto" style="font-size:10px;">Hitung otomatis sesuai aturan Perusahaan.</p>
+            </div>
+            <button class="w-full py-3.5 px-6 bg-white text-slate-950 font-semibold text-sm rounded-2xl shadow-xl hover:bg-slate-100 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer" id="welcomeBtn" onclick="dismissWelcome()">
+                <span>Let's Go</span>
+                <i class="w-4 h-4 text-slate-950 group-hover:translate-x-1 transition-transform" data-lucide="arrow-right"></i>
+            </button>
+            <p class="mt-6 text-[11px] text-white/50 font-medium flex items-center justify-center gap-1">Created with <i class="w-3 h-3 text-rose-500 fill-rose-500" data-lucide="heart"></i> Muhasa.Fahlevi</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto w-full space-y-4" id="mainContent">
+        <header class="header-sticky" id="mainHeader">
+            <div class="header-inner">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="header-logo w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/30 shrink-0" id="headerLogo"><i class="w-5 h-5 sm:w-6 sm:h-6" data-lucide="calculator"></i></div>
+                    <div class="min-w-0">
+                        <h1 class="text-base sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug whitespace-nowrap overflow-hidden text-ellipsis" id="headerTitle">Kalkulator Gaji &amp; Lembur</h1>
+                        <p class="header-subtitle text-[11px] sm:text-sm text-slate-500 font-medium truncate" id="headerSubtitle">PT BYD Auto Indonesia</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 sm:gap-2 no-print shrink-0">
+                    <button class="header-btn p-2 sm:p-2.5 text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100/80 rounded-2xl transition active:scale-95 flex items-center justify-center" onclick="openTutorial()" title="Panduan" type="button"><i class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" data-lucide="book-open"></i></button>
+                    <button class="header-btn p-2 sm:p-2.5 text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-100/80 rounded-2xl transition active:scale-95 flex items-center justify-center" id="btnReset" onclick="resetAll()" title="Reset"><i class="w-4 h-4 sm:w-5 sm:h-5 text-rose-600" data-lucide="rotate-ccw"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="tab-page active" id="tabHitung">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-start">
+                <div class="lg:col-span-7 space-y-3">
+                    <section class="scroll-reveal ios-card p-3.5 rounded-2xl shadow-sm space-y-2">
+                        <div class="flex items-center gap-2 pb-1.5 border-b border-slate-100"><div class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center"><i class="w-3.5 h-3.5" data-lucide="settings"></i></div><h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Pengaturan Dasar &amp; Tarif Lembur</h2></div>
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <div><label class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1 whitespace-nowrap">Gaji Pokok (Rp)</label><input class="ios-input w-full px-2.5 py-1.5 rounded-lg font-semibold text-slate-900 text-xs" id="gajiPokok" oninput="calculateAll()" type="number" value="3739042"/></div>
+                            <div><label class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1 whitespace-nowrap">Kehadiran (Hari)</label><input class="ios-input w-full px-2.5 py-1.5 rounded-lg font-semibold text-slate-900 text-xs text-center" id="kehadiran" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div><label class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1 whitespace-nowrap">Tarif / Jam (TUL)</label><div class="relative"><span class="absolute left-2.5 top-1.5 text-slate-400 text-xs font-medium">Rp</span><input class="w-full pl-7 pr-2 py-1.5 bg-slate-100 border border-slate-200 rounded-lg font-bold text-blue-600 text-xs cursor-not-allowed" id="tarifLemburJam" readonly="readonly" type="number"/></div></div>
+                        </div>
+                    </section>
+
+                    <div class="scroll-reveal ios-card rounded-xl border border-slate-200/80 overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between px-3.5 py-2 text-left bg-slate-50/80 hover:bg-slate-100/80 transition-colors" onclick="toggleKalender()" type="button">
+                            <div class="flex items-center gap-2"><i class="w-3.5 h-3.5 text-emerald-500" data-lucide="calendar-days"></i><span class="text-xs font-semibold text-slate-700">Hari Masuk PT BYD 2026</span></div>
+                            <i class="w-4 h-4 text-slate-400 transition-transform duration-300" data-lucide="chevron-down" id="kalenderIcon"></i>
+                        </button>
+                        <div class="accordion-content accordion-tall bg-white/90 px-3.5 py-0 text-[11px] text-slate-600 leading-relaxed" id="kalenderBody">
+                            <div class="py-3 border-t border-slate-100">
+                                <div class="block rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-colors cursor-zoom-in" onclick="openKalenderPopup()" role="button" tabindex="0">
+                                    <img alt="Kalender Hari Masuk PT BYD 2026" class="w-full h-auto block" decoding="async" loading="lazy" src="https://res.cloudinary.com/n5omj6b6/image/upload/v1791287211/1791284870515.webp"/>
+                                </div>
+                                <p class="text-[10px] text-slate-400 mt-2 mb-1 text-center flex items-center justify-center gap-1"><i class="w-3 h-3" data-lucide="maximize-2"></i>Ketuk gambar untuk memperbesar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="scroll-reveal ios-card p-3.5 rounded-2xl shadow-sm space-y-2">
+                        <div class="flex items-center gap-2 pb-1.5 border-b border-slate-100"><div class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center"><i class="w-3.5 h-3.5" data-lucide="clock"></i></div><h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Input Jumlah Hari Lemburan</h2></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs whitespace-nowrap">
+                                <thead><tr class="text-slate-400 uppercase text-[10px] font-semibold tracking-wider border-b border-slate-100"><th class="py-1.5 px-2">Durasi Lembur</th><th class="py-1.5 px-2 w-28 text-center">Jumlah Hari</th><th class="py-1.5 px-2 text-right">Total Uang Lembur</th></tr></thead>
+                                <tbody class="divide-y divide-slate-100/80 font-medium">
+                                    <tr class="hover:bg-slate-50/60 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">2 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_w2" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_w2">Rp0</td></tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">2.5 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_w2_5" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_w2_5">Rp0</td></tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">3 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_w3" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_w3">Rp0</td></tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">3.5 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_w3_5" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_w3_5">Rp0</td></tr>
+                                    <tr class="hover:bg-purple-50/30 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">8 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_we8" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_we8">Rp0</td></tr>
+                                    <tr class="hover:bg-purple-50/30 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">9 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_we9" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_we9">Rp0</td></tr>
+                                    <tr class="hover:bg-purple-50/30 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">10 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_we10" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_we10">Rp0</td></tr>
+                                    <tr class="hover:bg-purple-50/30 transition-colors"><td class="py-1 px-2 font-semibold text-slate-700">10.5 Jam</td><td class="py-1 px-2"><input class="ios-input w-full text-center rounded-md py-1 px-2 font-bold text-slate-800 text-xs" id="ot_we10_5" min="0" oninput="calculateAll()" type="number" value="0"/></td><td class="py-1 px-2 text-right font-semibold text-slate-800" id="val_ot_we10_5">Rp0</td></tr>
+                                </tbody>
+                                <tfoot><tr class="border-t border-slate-200 font-bold bg-blue-50/50 text-slate-900"><td class="py-2 px-2 text-[11px] uppercase tracking-wider" colspan="2">Total Upah Lembur <span class="text-blue-600 font-bold ml-1 text-xs" id="disp_totalTulTable">0 TUL</span></td><td class="py-2 px-2 text-right text-sm text-blue-600" id="totalUpahLembur">Rp0</td></tr></tfoot>
+                            </table>
+                        </div>
+                    </section>
+
+                    <div class="scroll-reveal ios-card rounded-xl border border-slate-200/80 overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between px-3.5 py-2 text-left bg-slate-50/80 hover:bg-slate-100/80 transition-colors" onclick="toggleAccordion()">
+                            <div class="flex items-center gap-2"><i class="w-3.5 h-3.5 text-blue-500" data-lucide="info"></i><span class="text-xs font-semibold text-slate-700">Catatan Aturan Konversi Lembur</span></div>
+                            <i class="w-4 h-4 text-slate-400 transition-transform duration-300" data-lucide="chevron-down" id="accordionIcon"></i>
+                        </button>
+                        <div class="accordion-content bg-white/90 px-3.5 py-0 text-[11px] text-slate-600 leading-relaxed" id="accordionBody">
+                            <div class="py-3 space-y-3 border-t border-slate-100">
+                                <div><div class="font-semibold text-slate-800 mb-2 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Hari Kerja</div>
+                                <div class="grid grid-cols-[auto_auto_1fr_auto] gap-x-2 gap-y-1 items-baseline text-[11px] bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                    <span class="font-semibold text-slate-700 text-right">2 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1 (1.5x) + Jam 2 (2x)</span><span class="font-bold text-blue-600 text-right">3.5 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">2.5 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1 (1.5x) + Jam 2-2.5 (2x)</span><span class="font-bold text-blue-600 text-right">4.5 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">3 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1 (1.5x) + Jam 2-3 (2x)</span><span class="font-bold text-blue-600 text-right">5.5 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">3.5 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1 (1.5x) + Jam 2-3.5 (2x)</span><span class="font-bold text-blue-600 text-right">6.5 Jam</span>
+                                </div></div>
+                                <div><div class="font-semibold text-purple-800 mb-2 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Hari Libur</div>
+                                <div class="grid grid-cols-[auto_auto_1fr_auto] gap-x-2 gap-y-1 items-baseline text-[11px] bg-purple-50/50 p-2.5 rounded-lg border border-purple-100">
+                                    <span class="font-semibold text-slate-700 text-right">8 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1-8 (2x)</span><span class="font-bold text-purple-600 text-right">16 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">9 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1-8 (2x) + Jam 9 (3x)</span><span class="font-bold text-purple-600 text-right">19 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">10 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1-8 (2x) + Jam 9 (3x) + Jam 10 (4x)</span><span class="font-bold text-purple-600 text-right">23 Jam</span>
+                                    <span class="font-semibold text-slate-700 text-right">10.5 Jam</span><span class="text-slate-300">:</span><span class="text-slate-500">Jam 1-8 (2x) + Jam 9 (3x) + Jam 10-10.5 (4x)</span><span class="font-bold text-purple-600 text-right">25 Jam</span>
+                                </div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-3">
+                    <section class="scroll-reveal ios-card p-3.5 rounded-2xl shadow-sm space-y-2">
+                        <div class="flex items-center gap-2 pb-1.5 border-b border-slate-100"><div class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center"><i class="w-3.5 h-3.5" data-lucide="wallet"></i></div><h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Tunjangan &amp; Total Bruto</h2></div>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">Gaji Pokok</span><span class="font-semibold text-slate-800" id="disp_gajiPokok">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><div class="flex items-center gap-1.5"><label class="text-slate-500 font-medium">KPI Incentive</label><div class="flex items-center gap-0.5 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200"><input class="w-8 text-center font-bold text-slate-800 text-xs bg-transparent focus:outline-none" id="persenKpi" min="0" oninput="calculateAll()" type="number" value="0"/><span class="text-[10px] font-bold text-slate-500">%</span></div></div><span class="font-semibold text-slate-800" id="disp_tunjKpi">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Attendance Bonus</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjKehadiran" oninput="calculateAll()" type="number" value="400000"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Housing Allowance</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjRumah" oninput="calculateAll()" type="number" value="400000"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Area Living Allowance</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjGedung" oninput="calculateAll()" type="number" value="600000"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Transportation Allowance<span class="text-[10px] text-slate-400 font-normal"> (Rp30rb/hr)</span></label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjTransport" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 px-2 text-[11px] text-slate-600 bg-slate-50/80 rounded-md my-0.5 border border-slate-100">
+                                <span class="font-medium text-slate-600">Ikut jemputan?</span>
+                                <div class="flex items-center gap-3">
+                                    <label class="flex items-center gap-1 cursor-pointer select-none"><input class="rounded text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer" id="jemputanIya" onchange="handleJemputan('iya')" type="checkbox"/><span class="font-semibold text-slate-700">Iya</span></label>
+                                    <label class="flex items-center gap-1 cursor-pointer select-none"><input checked="checked" class="rounded text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer" id="jemputanTidak" onchange="handleJemputan('tidak')" type="checkbox"/><span class="font-semibold text-slate-700">Tidak</span></label>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">Meal Allowance<span class="text-[10px] text-slate-400 font-normal"> (Rp20rb/hr)</span></span><span class="font-semibold text-slate-800" id="tunjMakan">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Night Shift Allowance</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjShiftMalam" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Communication Allowance</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjKomunikasi" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Setting-in Allowance</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjSettingIn" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">PKWT Compensation / Other</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="kompensasi" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Performance Award</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="perfAward" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><label class="text-slate-500 font-medium">Seniority Award</label><input class="ios-input w-28 text-right rounded-md py-0.5 px-2 font-semibold text-slate-800 text-xs" id="tunjSeniority" oninput="calculateAll()" type="number" value="0"/></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">Overtime <span class="text-blue-600 font-semibold text-[11px]" id="disp_totalTulBruto">(0 TUL)</span></span><span class="font-semibold text-blue-600" id="disp_totalLembur">Rp0</span></div>
+                            <div class="pt-2 border-t border-slate-200 flex justify-between items-center font-bold text-slate-900 text-sm whitespace-nowrap"><span>Total Bruto</span><span class="text-emerald-600 text-base" id="totalBruto">Rp0</span></div>
+                        </div>
+                    </section>
+
+                    <div class="scroll-reveal relative overflow-hidden rounded-2xl shadow-lg shadow-indigo-500/20 no-print" id="posBanner">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-violet-700"></div>
+                        <div class="relative">
+                            <div class="p-3.5 sm:p-4 pb-2.5">
+                                <span class="inline-block text-[8px] font-extrabold uppercase tracking-widest text-indigo-900 bg-amber-300 px-2 py-0.5 rounded-full mb-1.5">Coba Gratis 7 Hari</span>
+                                <h3 class="text-white font-extrabold text-base sm:text-lg leading-tight tracking-tight mb-0.5">POS Kasir untuk UMKM</h3>
+                                <p class="text-white/85 text-[11px] leading-snug mb-2.5">Kelola toko, stok, dan laporan penjualan otomatis. Daftarkan akunmu &amp; coba 7 hari gratis.</p>
+                                <a class="inline-flex items-center gap-1.5 bg-white text-indigo-600 font-bold text-[11px] px-3 py-1.5 rounded-lg shadow-lg hover:bg-slate-50 hover:gap-2.5 transition-all duration-300" href="https://kalaspacepro.blogspot.com" rel="noopener noreferrer" target="_blank">Lihat Demo<i class="fa-solid fa-arrow-right text-[9px]"></i></a>
+                            </div>
+                            <div class="px-2.5 pb-2.5"><div class="rounded-lg overflow-hidden shadow-xl"><img alt="POS Kasir" class="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]" decoding="async" loading="lazy" src="https://res.cloudinary.com/n5omj6b6/image/upload/v1791287266/1788452184558.webp"/></div></div>
+                            <div class="relative pt-2 px-3.5 pb-3 border-t border-white/15 flex items-center gap-3 sm:gap-4 text-white/90 text-[10px] font-semibold overflow-x-auto scrollbar-hide">
+                                <div class="flex items-center gap-1 shrink-0"><i class="fa-solid fa-bolt text-amber-300 text-[10px]"></i><span>Cepat &amp; Ringan</span></div>
+                                <div class="flex items-center gap-1 shrink-0"><i class="fa-solid fa-bolt text-amber-300 text-[10px]"></i><span>Rekap Harian</span></div>
+                                <div class="flex items-center gap-1 shrink-0"><i class="fa-solid fa-bolt text-amber-300 text-[10px]"></i><span>Laporan Otomatis</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="scroll-reveal ios-card p-3.5 rounded-2xl shadow-sm space-y-2.5">
+                        <div class="flex items-center gap-2 pb-1.5 border-b border-slate-100"><div class="w-6 h-6 rounded-md bg-rose-50 text-rose-600 flex items-center justify-center"><i class="w-3.5 h-3.5" data-lucide="receipt"></i></div><h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Rincian Potongan Gaji</h2></div>
+                        <div class="flex justify-between items-center gap-2 pt-0.5">
+                            <div><label class="text-[10px] text-slate-500 uppercase font-semibold tracking-wider whitespace-nowrap block">Status PTKP</label><span class="text-[9px] text-slate-400 font-medium">Sesuai kondisi Anda</span></div>
+                            <div class="ptkp-wrapper" id="ptkpWrapper">
+                                <button class="ptkp-trigger" id="ptkpTrigger" onclick="togglePtkpDropdown(event)" type="button"><span class="ptkp-label" id="ptkpLabel">TK/0 &#8212; Lajang, 0 tgg</span><svg class="ptkp-chevron" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                <div class="ptkp-panel" id="ptkpPanel">
+                                    <div class="ptkp-option selected" data-value="TK/0" onclick="selectPtkp(this)">TK/0 &#8212; Lajang, 0 tgg</div>
+                                    <div class="ptkp-option" data-value="TK/1" onclick="selectPtkp(this)">TK/1 &#8212; Lajang, 1 tgg</div>
+                                    <div class="ptkp-option" data-value="TK/2" onclick="selectPtkp(this)">TK/2 &#8212; Lajang, 2 tgg</div>
+                                    <div class="ptkp-option" data-value="TK/3" onclick="selectPtkp(this)">TK/3 &#8212; Lajang, 3 tgg</div>
+                                    <div class="ptkp-option" data-value="K/0" onclick="selectPtkp(this)">K/0 &#8212; Kawin, 0 tgg</div>
+                                    <div class="ptkp-option" data-value="K/1" onclick="selectPtkp(this)">K/1 &#8212; Kawin, 1 tgg</div>
+                                    <div class="ptkp-option" data-value="K/2" onclick="selectPtkp(this)">K/2 &#8212; Kawin, 2 tgg</div>
+                                    <div class="ptkp-option" data-value="K/3" onclick="selectPtkp(this)">K/3 &#8212; Kawin, 3 tgg</div>
+                                </div>
+                            </div>
+                            <input id="statusPtkp" type="hidden" value="TK/0"/>
+                        </div>
+                        <div class="space-y-1.5 text-xs pt-1">
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">BPJS Kesehatan <span class="text-slate-400 font-normal">(1%)</span></span><span class="font-semibold text-slate-800 tabular-nums" id="bpjsKesehatan">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">BPJS JHT <span class="text-slate-400 font-normal">(2%)</span></span><span class="font-semibold text-slate-800 tabular-nums" id="bpjsJHT">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">BPJS JP <span class="text-slate-400 font-normal">(1%)</span></span><span class="font-semibold text-slate-800 tabular-nums" id="bpjsJP">Rp0</span></div>
+                            <div class="flex justify-between items-center py-0.5 whitespace-nowrap"><span class="text-slate-500 font-medium">PPh 21 <span class="text-slate-400 font-normal">TER <span id="terCategoryLabel">A</span> &#183; <span id="terRateLabel">0%</span></span></span><span class="font-semibold text-slate-800 tabular-nums" id="pph21">Rp0</span></div>
+                        </div>
+                        <div class="p-2.5 bg-rose-50/70 rounded-xl border border-rose-100/80 flex justify-between items-center text-rose-900 font-medium text-xs">
+                            <span>Total Potongan:</span><span class="font-bold text-rose-700 tabular-nums" id="nominalPotongan">Rp0</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-4 rounded-xl space-y-1.5 shadow-lg shadow-slate-900/10 border border-slate-800">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Estimasi Total Gaji Bersih (Netto)</span>
+                                <i class="w-4 h-4 text-emerald-400 cursor-pointer hover:scale-125 transition-transform" data-lucide="check-circle-2" id="nettoCheckIcon" title="Putar Suara"></i>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight tabular-nums" id="totalNetto">Rp0</div>
+                            <div class="flex items-start gap-1.5 pt-1.5 border-t border-slate-700/50">
+                                <i class="w-3 h-3 text-amber-400 shrink-0 mt-0.5" data-lucide="info"></i>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">Estimasi BPJS &amp; PPh 21 berdasarkan aturan <span class="text-amber-300 font-semibold">2026</span> (PMK 168/2023 &amp; PP 58/2023).</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-page" id="tabRiwayat">
+            <div class="space-y-3">
+                <section class="ios-card p-4 rounded-2xl shadow-sm space-y-3">
+                    <div class="flex items-center justify-between gap-2">
+                        <div><h2 class="text-sm font-bold text-slate-800">Riwayat Gaji</h2><p class="text-[11px] text-slate-500 mt-0.5">Maks 12 bulan terakhir</p></div>
+                        <button class="inline-flex items-center gap-1.5 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-bold text-[11px] px-3 py-2 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl active:scale-95 transition-all" onclick="openSimpanModal()"><i class="w-3.5 h-3.5" data-lucide="plus"></i>Simpan</button>
+                    </div>
+                    <div class="p-3 bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl border border-indigo-100">
+                        <div class="chart-header">
+                            <div class="chart-title-wrap"><i class="w-4 h-4 text-indigo-600" data-lucide="trending-up"></i><span class="text-[11px] font-bold text-indigo-900 uppercase tracking-wider">Grafik Gaji Bulanan</span></div>
+                            <div class="chart-range-toggle">
+                                <button class="chart-range-btn active" data-range="6" onclick="setChartRange(6)" type="button">6 Bulan</button>
+                                <button class="chart-range-btn" data-range="12" onclick="setChartRange(12)" type="button">12 Bulan</button>
+                            </div>
+                        </div>
+                        <div class="chart-container" id="riwayatChart"></div>
+                        <div class="text-center py-8" id="riwayatEmpty">
+                            <div class="w-14 h-14 rounded-2xl bg-white border border-indigo-100 flex items-center justify-center mx-auto mb-2 shadow-sm"><i class="w-6 h-6 text-indigo-400" data-lucide="trending-up"></i></div>
+                            <p class="text-xs text-slate-500 font-medium">Belum ada riwayat</p>
+                            <p class="text-[10px] text-slate-400 mt-1">Klik "Simpan" untuk mulai tracking</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ios-card p-3.5 rounded-2xl shadow-sm">
+                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100 mb-3"><i class="w-4 h-4 text-slate-600" data-lucide="list"></i><h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Daftar Riwayat</h3><span class="text-[9px] text-slate-400 font-medium ml-auto">Klik untuk detail</span></div>
+                    <div class="space-y-2" id="riwayatList"></div>
+                </section>
+            </div>
+        </div>
+
+        <div class="tab-page" id="tabTabungan">
+            <div class="space-y-3">
+                <section class="ios-card p-4 rounded-2xl shadow-sm space-y-4">
+                    <div><h2 class="text-sm font-bold text-slate-800">Target Tabungan</h2><p class="text-[11px] text-slate-500 mt-0.5">Rencanakan masa depan dari gaji bulanan</p></div>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <div class="flex justify-between items-center mb-2"><span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Gaji Bersih (Netto)</span><span class="text-sm font-bold text-emerald-600 tabular-nums" id="savingsNetto">Rp0</span></div>
+                        <div class="text-[10px] text-slate-400">Diambil dari tab Kalkulator</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3"><label class="text-[11px] font-bold text-slate-700">Persentase Nabung</label><span class="text-sm font-extrabold text-indigo-600 tabular-nums" id="savingsPctLabel">20%</span></div>
+                        <input class="range-slider" id="savingsPct" max="50" min="5" oninput="updateSavings()" step="1" type="range" value="20"/>
+                        <div class="flex justify-between text-[9px] text-slate-400 font-semibold mt-1.5"><span>5%</span><span>50%</span></div>
+                    </div>
+                    <div class="p-3 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl text-white shadow-lg shadow-indigo-500/25">
+                        <div class="text-[10px] font-semibold uppercase tracking-wider text-white/70 mb-0.5">Nabung / Bulan</div>
+                        <div class="text-2xl font-extrabold tabular-nums" id="savingsPerMonth">Rp0</div>
+                    </div>
+                </section>
+
+                <section class="ios-card p-4 rounded-2xl shadow-sm space-y-3">
+                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-sm"><i class="w-4 h-4" data-lucide="trending-up"></i></div>
+                        <div class="flex-1">
+                            <div class="text-xs font-bold text-slate-800">Simulasi Reksadana</div>
+                            <div class="text-[10px] text-slate-500">Return tidak dijamin, dapat naik/turun</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between gap-3 p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <label class="text-[11px] font-semibold text-emerald-900">Return / Tahun</label>
+                        <div class="flex items-center gap-1">
+                            <input class="w-14 text-center font-bold text-emerald-700 text-sm bg-white border border-emerald-200 rounded-lg py-1.5 focus:outline-none focus:border-emerald-500" id="returnReksadana" max="30" min="0" oninput="updateSavings()" step="0.5" type="number" value="8"/>
+                            <span class="text-emerald-700 font-bold text-xs">%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="text-center p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100"><div class="text-[9px] text-emerald-700 font-bold uppercase tracking-wider mb-0.5">1 Tahun</div><div class="text-[11px] font-bold text-emerald-900 tabular-nums" id="rd1yr">Rp0</div></div>
+                        <div class="text-center p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100"><div class="text-[9px] text-emerald-700 font-bold uppercase tracking-wider mb-0.5">3 Tahun</div><div class="text-[11px] font-bold text-emerald-900 tabular-nums" id="rd3yr">Rp0</div></div>
+                        <div class="text-center p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100"><div class="text-[9px] text-emerald-700 font-bold uppercase tracking-wider mb-0.5">5 Tahun</div><div class="text-[11px] font-bold text-emerald-900 tabular-nums" id="rd5yr">Rp0</div></div>
+                    </div>
+                </section>
+
+                <section class="ios-card p-4 rounded-2xl shadow-sm space-y-3">
+                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center shadow-sm"><i class="w-4 h-4" data-lucide="landmark"></i></div>
+                        <div class="flex-1">
+                            <div class="text-xs font-bold text-slate-800">Simulasi Deposito</div>
+                            <div class="text-[10px] text-slate-500">Bunga dikenakan pajak 20%</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between gap-3 p-2.5 bg-blue-50/70 rounded-xl border border-blue-100">
+                        <label class="text-[11px] font-semibold text-blue-900">Bunga / Tahun</label>
+                        <div class="flex items-center gap-1">
+                            <input class="w-14 text-center font-bold text-blue-700 text-sm bg-white border border-blue-200 rounded-lg py-1.5 focus:outline-none focus:border-blue-500" id="bungaDeposito" max="15" min="0" oninput="updateSavings()" step="0.25" type="number" value="4"/>
+                            <span class="text-blue-700 font-bold text-xs">%</span>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-slate-500 text-center p-1.5 bg-slate-50 rounded-lg border border-slate-100">Bunga bersih setelah pajak: <span class="font-bold text-slate-700" id="bungaNetLabel">3,20%</span></div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="text-center p-2.5 bg-blue-50/70 rounded-xl border border-blue-100"><div class="text-[9px] text-blue-700 font-bold uppercase tracking-wider mb-0.5">1 Tahun</div><div class="text-[11px] font-bold text-blue-900 tabular-nums" id="dp1yr">Rp0</div></div>
+                        <div class="text-center p-2.5 bg-blue-50/70 rounded-xl border border-blue-100"><div class="text-[9px] text-blue-700 font-bold uppercase tracking-wider mb-0.5">3 Tahun</div><div class="text-[11px] font-bold text-blue-900 tabular-nums" id="dp3yr">Rp0</div></div>
+                        <div class="text-center p-2.5 bg-blue-50/70 rounded-xl border border-blue-100"><div class="text-[9px] text-blue-700 font-bold uppercase tracking-wider mb-0.5">5 Tahun</div><div class="text-[11px] font-bold text-blue-900 tabular-nums" id="dp5yr">Rp0</div></div>
+                    </div>
+                </section>
+
+                <section class="ios-card p-4 rounded-2xl shadow-sm space-y-3">
+                    <div class="text-xs font-bold text-slate-800">Bandingkan 5 Tahun</div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-xl border border-slate-100"><span class="text-[11px] font-semibold text-slate-600">Nabung Biasa</span><span class="text-sm font-bold text-slate-800 tabular-nums" id="cmpBiasa">Rp0</span></div>
+                        <div class="flex justify-between items-center p-2.5 bg-blue-50/70 rounded-xl border border-blue-100"><span class="text-[11px] font-semibold text-blue-800">Deposito</span><span class="text-sm font-bold text-blue-900 tabular-nums" id="cmpDeposito">Rp0</span></div>
+                        <div class="flex justify-between items-center p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100"><span class="text-[11px] font-semibold text-emerald-800">Reksadana</span><span class="text-sm font-bold text-emerald-900 tabular-nums" id="cmpReksadana">Rp0</span></div>
+                    </div>
+                </section>
+
+                <div class="text-center text-[10px] text-slate-400 px-3 leading-relaxed">&#9888;&#65039; Angka di atas hanya estimasi. Return reksadana tidak dijamin, dapat naik/turun. Bunga deposito dapat berubah sesuai kebijakan bank.</div>
+            </div>
+        </div>
+
+        <div class="tab-page" id="tabSetting">
+            <div class="space-y-3">
+                <div class="setting-group">
+                    <button class="setting-row" id="installAppRow" onclick="installPWA()" style="display:none;" type="button">
+                        <div class="setting-icon indigo"><i data-lucide="download"></i></div>
+                        <div class="setting-text">
+                            <div class="setting-title">Install Aplikasi</div>
+                            <div class="setting-sub">Pasang ke layar utama HP Anda</div>
+                        </div>
+                        <i class="setting-chevron" data-lucide="chevron-right"></i>
+                    </button>
+                    <button class="setting-row" onclick="toggleDarkMode()" type="button">
+                        <div class="setting-icon indigo"><i data-lucide="moon"></i></div>
+                        <div class="setting-text">
+                            <div class="setting-title">Mode Gelap</div>
+                            <div class="setting-sub">Ubah tema terang / gelap</div>
+                        </div>
+                        <div class="setting-toggle" id="settingToggle"></div>
+                    </button>
+                    <button class="setting-row" onclick="confirmClearHistory()" type="button">
+                        <div class="setting-icon rose"><i data-lucide="trash-2"></i></div>
+                        <div class="setting-text">
+                            <div class="setting-title">Hapus Riwayat</div>
+                            <div class="setting-sub">Hapus semua data riwayat gaji</div>
+                        </div>
+                        <i class="setting-chevron" data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+                <div class="setting-footer">
+                    <div class="setting-version">Kalkulator Gaji BYD <b>v2.0</b> &#183; 2026</div>
+                </div>
+                <div class="text-center pt-2 pb-2">
+                    <p class="author-credit text-xs text-slate-500 font-medium flex items-center justify-center gap-1.5 cursor-pointer hover:text-slate-800 transition-colors" onclick="openProfileModal()">Created with <i class="w-3.5 h-3.5 text-rose-500 fill-rose-500" data-lucide="heart"></i> Muhasa.Fahlevi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-page" id="tabShare">
+            <div class="space-y-3">
+                <section class="ios-card p-5 rounded-2xl shadow-sm text-center space-y-3">
+                    <div class="w-16 h-16 rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center mx-auto shadow-xl shadow-indigo-500/30"><i class="w-7 h-7" data-lucide="share-2"></i></div>
+                    <div><h2 class="text-base font-bold text-slate-800">Bagikan Kalkulator</h2><p class="text-[11px] text-slate-500 mt-1">Bantu rekan kerja hitung gaji mereka dengan mudah</p></div>
+                </section>
+                <section class="ios-card p-3.5 rounded-2xl shadow-sm space-y-2">
+                    <button class="w-full flex items-center gap-3 p-3.5 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl shadow-lg shadow-emerald-500/30 hover:shadow-xl active:scale-95 transition-all" onclick="shareWhatsApp()">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
+                        <div class="text-left flex-1"><div class="text-sm font-bold">Bagikan ke WhatsApp</div><div class="text-[10px] text-white/85">Kirim link ke grup / teman</div></div>
+                        <i class="w-4 h-4" data-lucide="chevron-right"></i>
+                    </button>
+                    <button class="w-full flex items-center gap-3 p-3.5 bg-gradient-to-r from-indigo-500 to-violet-600 text-white rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl active:scale-95 transition-all" onclick="shareNative()">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center"><i class="w-5 h-5" data-lucide="share"></i></div>
+                        <div class="text-left flex-1"><div class="text-sm font-bold">Bagikan Lainnya</div><div class="text-[10px] text-white/85">Telegram, email, dll</div></div>
+                        <i class="w-4 h-4" data-lucide="chevron-right"></i>
+                    </button>
+                    <button class="w-full flex items-center gap-3 p-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl active:scale-95 transition-all" onclick="copyLink()">
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200"><i class="w-5 h-5 text-slate-600" data-lucide="link"></i></div>
+                        <div class="text-left flex-1"><div class="text-sm font-bold">Copy Link</div><div class="text-[10px] text-slate-500" id="copyHint">Tekan untuk copy ke clipboard</div></div>
+                        <i class="w-4 h-4 text-slate-400" data-lucide="chevron-right"></i>
+                    </button>
+                </section>
+                <div class="ios-card p-3.5 rounded-2xl shadow-sm">
+                    <div class="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-2">Link</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 font-mono text-[10px] text-slate-600 break-all">https://byd-kalkulator.blogspot.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="capsule-nav" id="capsuleNav">
+        <div class="capsule-slider" id="capsuleSlider"></div>
+        <button class="capsule-item active" data-tab="hitung" onclick="switchTab('hitung')"><i data-lucide="calculator"></i><span class="label">Hitung</span></button>
+        <button class="capsule-item" data-tab="riwayat" onclick="switchTab('riwayat')"><i data-lucide="bar-chart-3"></i><span class="label">Riwayat</span></button>
+        <button class="capsule-item" data-tab="tabungan" onclick="switchTab('tabungan')"><i data-lucide="target"></i><span class="label">Nabung</span></button>
+        <button class="capsule-item" data-tab="setting" onclick="switchTab('setting')"><i data-lucide="settings"></i><span class="label">Setting</span></button>
+        <button class="capsule-item" data-tab="share" onclick="switchTab('share')"><i data-lucide="share-2"></i><span class="label">Share</span></button>
+    </nav>
+
+    <div class="fixed inset-0 z-[90] bg-slate-900/70 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-300" id="tutorialOverlay">
+        <div class="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full shadow-2xl flex flex-col overflow-hidden" id="tutorialCard" onclick="event.stopPropagation()" style="max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);">
+            <div class="tutorial-header p-4 sm:p-5 pb-3 border-b border-slate-200 flex-shrink-0">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0"><i class="w-5 h-5 text-white" data-lucide="book-open"></i></div>
+                    <div class="flex-1 min-w-0"><h2 class="tutorial-title text-base sm:text-lg font-bold text-slate-900 leading-tight" id="tutorialTitle">Panduan Penggunaan</h2><p class="tutorial-desc text-[11px] sm:text-xs text-slate-500 mt-0.5" id="tutorialDesc">Ikuti langkah berikut untuk hasil akurat</p></div>
+                    <button class="p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors shrink-0" id="tutorialCloseBtn" onclick="closeTutorial()"><i class="w-4 h-4" data-lucide="x"></i></button>
+                </div>
+            </div>
+            <div class="tutorial-body p-4 sm:p-5 overflow-y-auto flex-1" id="tutorialContent"></div>
+            <div class="tutorial-footer p-4 sm:p-5 pt-3 border-t border-slate-200 flex-shrink-0 bg-white">
+                <button class="w-full py-3 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm rounded-xl shadow-lg shadow-blue-500/30 active:scale-95 transition-all flex items-center justify-center gap-2" id="tutorialBtn" onclick="closeTutorial()"><i class="w-4 h-4" data-lucide="check"></i><span>Mengerti</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="simpan-modal-overlay" id="simpanModal" onclick="handleSimpanModalClick(event)">
+        <div class="simpan-modal-card" onclick="event.stopPropagation()">
+            <div class="riwayat-modal-drag"></div>
+            <div class="simpan-modal-header">
+                <div class="simpan-header-left">
+                    <div class="simpan-header-icon"><i data-lucide="save"></i></div>
+                    <div>
+                        <div class="simpan-header-title">Simpan ke Riwayat</div>
+                        <div class="simpan-header-sub">Pilih periode gaji yang ingin disimpan</div>
+                    </div>
+                </div>
+                <button class="simpan-modal-close" onclick="closeSimpanModal()" type="button"><i data-lucide="x"></i></button>
+            </div>
+            <div class="simpan-modal-body">
+                <div class="simpan-section-label"><i data-lucide="calendar"></i>Periode Gaji</div>
+                <div class="simpan-field-row">
+                    <div class="simpan-field"><select aria-label="Bulan" id="simpanBulan"></select></div>
+                    <div class="simpan-field"><select aria-label="Tahun" id="simpanTahun"></select></div>
+                </div>
+                <div class="simpan-section-label"><i data-lucide="calculator"></i>Preview dari Kalkulator</div>
+                <div class="simpan-preview">
+                    <div class="simpan-preview-row"><span>Gaji Pokok</span><span id="simpanPrevGapok">Rp0</span></div>
+                    <div class="simpan-preview-row"><span>Total Bruto</span><span id="simpanPrevBruto">Rp0</span></div>
+                    <div class="simpan-preview-row total"><span>Gaji Bersih (Netto)</span><span id="simpanPrevNetto">Rp0</span></div>
+                </div>
+                <div class="simpan-note" id="simpanNoteWrap">
+                    <i data-lucide="info"></i>
+                    <div>Akan disimpan sebagai <b id="simpanNote">&#8212;</b></div>
+                </div>
+            </div>
+            <div class="simpan-modal-footer">
+                <button class="simpan-btn-cancel" onclick="closeSimpanModal()" type="button">Batal</button>
+                <button class="simpan-btn-confirm" onclick="confirmSaveHistory()" type="button"><i data-lucide="save"></i>Simpan Data</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="riwayat-modal-overlay" id="riwayatModal" onclick="handleRiwayatModalClick(event)">
+        <div class="riwayat-modal-card" onclick="event.stopPropagation()">
+            <div class="riwayat-modal-drag"></div>
+            <div class="riwayat-modal-header">
+                <div>
+                    <div class="riwayat-modal-label">Rekap Gaji</div>
+                    <div class="riwayat-modal-date" id="rmDate">&#8212;</div>
+                </div>
+                <button class="riwayat-modal-close" onclick="closeRiwayatModal()" title="Tutup" type="button"><i data-lucide="x"></i></button>
+            </div>
+            <div class="riwayat-modal-netto-wrap">
+                <div class="riwayat-modal-netto-label">Gaji Bersih (Netto)</div>
+                <div class="riwayat-modal-netto" id="rmNetto">Rp0</div>
+            </div>
+            <div class="riwayat-modal-body" id="rmBody"></div>
+            <div class="riwayat-modal-footer">
+                <button class="rm-delete-btn" onclick="deleteRiwayatFromModal()" type="button"><i data-lucide="trash-2"></i>Hapus Riwayat Ini</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-modal-overlay" id="profileModal" onclick="handleOverlayClick(event)">
+      <div class="card-container">
+        <div class="profile-card" id="profileCard">
+          <div class="card-front">
+            <button class="card-close-btn" id="btnModalClose" title="Tutup" type="button"><i class="fa-solid fa-xmark"></i></button>
+            <img alt="Muhasa Fahlevi" class="profile-img" decoding="async" fetchpriority="high" src="https://res.cloudinary.com/zjaiuouq/image/upload/v1789490336/IMG_20250928_184115.webp"/>
+            <div class="glass-overlay">
+              <div class="name-container"><h2 class="name">Muhasa Fahlevi</h2><span class="verified-icon"><i class="fa-solid fa-check"></i></span></div>
+              <p class="bio">Biarkan mereka menilai. Kritik tanpa logika hanyalah garbage code&#8212;delete and keep executing.</p>
+              <div class="card-footer">
+                <div class="stats"><div class="stat-item"><i class="fa-regular fa-user"></i><span>2173</span></div><div class="stat-item"><i class="fa-regular fa-image"></i><span>5</span></div></div>
+                <div class="actions-group">
+                  <a href="https://instagram.com/muhasa.fahlevi" target="_blank"><button class="btn-follow">Follow <span>+</span></button></a>
+                  <button class="btn-flip" id="btnFlip" title="View Projects"><i class="fa-solid fa-folder-open"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div>
+              <div class="back-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <button class="btn-close" id="btnClose"><i class="fa-solid fa-arrow-left"></i></button>
+                  <h3 class="back-title" style="margin: 0;">My Projects</h3>
+                </div>
+                <button class="btn-close" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="projects-list">
+                <a class="project-card" href="https://kalaspacepro.blogspot.com" target="_blank"><div class="project-left"><div class="project-icon icon-blue"><i class="fa-solid fa-store"></i></div><div class="project-info"><span class="project-name">POS Kasir UMKM</span><span class="project-desc">POS Kasir System</span></div></div><i class="fa-solid fa-arrow-up-right-from-square external-link-icon"></i></a>
+                <a class="project-card" href="javascript:void(0);"><div class="project-left"><div class="project-icon icon-cyan"><i class="fa-solid fa-chart-line"></i></div><div class="project-info"><span class="project-name">Simple Kalkulator Saham</span><span class="project-desc">Stock Calculator</span></div></div><i class="fa-solid fa-arrow-up-right-from-square external-link-icon"></i></a>
+                <a class="project-card" href="javascript:void(0);"><div class="project-left"><div class="project-icon icon-green"><i class="fa-solid fa-layer-group"></i></div><div class="project-info"><span class="project-name">UI Design Kit</span><span class="project-desc">Design System</span></div></div><i class="fa-solid fa-arrow-up-right-from-square external-link-icon"></i></a>
+                <a class="project-card" href="javascript:void(0);"><div class="project-left"><div class="project-icon icon-purple"><i class="fa-solid fa-mobile-screen-button"></i></div><div class="project-info"><span class="project-name">HRMS Mobile</span><span class="project-desc">Human Resource App</span></div></div><i class="fa-solid fa-arrow-up-right-from-square external-link-icon"></i></a>
+                <a class="project-card" href="javascript:void(0);"><div class="project-left"><div class="project-icon icon-orange"><i class="fa-solid fa-code"></i></div><div class="project-info"><span class="project-name">Simple HTML Editor</span><span class="project-desc">Code &amp; Web Tool</span></div></div><i class="fa-solid fa-arrow-up-right-from-square external-link-icon"></i></a>
+              </div>
+            </div>
+            <div class="back-footer-text">Click project to visit link</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lightbox-overlay" id="kalenderLightbox" onclick="handleLightboxClick(event)">
+        <div class="lightbox-toolbar" onclick="event.stopPropagation()">
+            <div class="lightbox-title"><i data-lucide="calendar-days"></i><span>Hari Masuk PT BYD 2026</span></div>
+            <div class="lightbox-actions">
+                <button class="lightbox-btn" onclick="zoomOutKalender()" title="Zoom Out" type="button"><i data-lucide="zoom-out"></i></button>
+                <button class="lightbox-btn" onclick="resetZoomKalender()" title="Reset Zoom" type="button"><i data-lucide="maximize"></i></button>
+                <button class="lightbox-btn" onclick="zoomInKalender()" title="Zoom In" type="button"><i data-lucide="zoom-in"></i></button>
+                <button class="lightbox-btn lightbox-btn-close" onclick="closeKalenderPopup()" title="Tutup" type="button"><i data-lucide="x"></i></button>
+            </div>
+        </div>
+        <div class="lightbox-stage" id="lightboxStage" onclick="event.stopPropagation()">
+            <img alt="Kalender" class="lightbox-img" id="kalenderImg" src="https://res.cloudinary.com/n5omj6b6/image/upload/v1791287211/1791284870515.webp"/>
+        </div>
+        <div class="lightbox-hint" onclick="event.stopPropagation()"><span>Scroll / cubit untuk zoom &#8226; Geser untuk memindah &#8226; ESC untuk menutup</span></div>
+    </div>
+
+    <script>
+const MULTIPLIERS={w2:3.5,w2_5:4.5,w3:5.5,w3_5:6.5,we8:16,we9:19,we10:23,we10_5:25};
+const TER_A=[[5400000,0],[5650000,.0025],[5950000,.005],[6300000,.0075],[6750000,.01],[7500000,.0125],[8550000,.015],[9650000,.0175],[10050000,.02],[10350000,.0225],[10700000,.025],[11050000,.03],[11600000,.035],[12500000,.04],[13750000,.05],[15100000,.06],[16950000,.07],[19750000,.08],[24150000,.09],[26450000,.10],[28000000,.11],[30050000,.12],[32400000,.13],[35400000,.14],[39100000,.15],[43850000,.16],[47800000,.17],[51400000,.18],[56300000,.19],[62200000,.20],[68600000,.21],[77500000,.22],[89000000,.23],[103000000,.24],[125000000,.25],[157000000,.26],[206000000,.27],[337000000,.28],[454000000,.29],[550000000,.30],[695000000,.31],[910000000,.32],[1400000000,.33],[Infinity,.34]];
+const TER_B=[[6200000,0],[6500000,.0025],[6850000,.005],[7300000,.0075],[9200000,.01],[10750000,.015],[11250000,.02],[11600000,.025],[12600000,.03],[13600000,.04],[14950000,.05],[16400000,.06],[18450000,.07],[21850000,.08],[26000000,.09],[27700000,.10],[29350000,.11],[31450000,.12],[33950000,.13],[37100000,.14],[41100000,.15],[45800000,.16],[49500000,.17],[53800000,.18],[58500000,.19],[64000000,.20],[71000000,.21],[80000000,.22],[93000000,.23],[109000000,.24],[129000000,.25],[163000000,.26],[211000000,.27],[374000000,.28],[459000000,.29],[555000000,.30],[704000000,.31],[957000000,.32],[1405000000,.33],[Infinity,.34]];
+const TER_C=[[6600000,0],[6950000,.0025],[7350000,.005],[7800000,.0075],[8850000,.01],[9800000,.0125],[10950000,.015],[11200000,.0175],[12050000,.02],[12950000,.03],[14150000,.04],[15550000,.05],[17050000,.06],[19500000,.07],[22700000,.08],[26600000,.09],[28100000,.10],[30100000,.11],[32600000,.12],[35400000,.13],[38900000,.14],[43000000,.15],[47400000,.16],[51200000,.17],[55800000,.18],[60400000,.19],[66700000,.20],[74500000,.21],[83200000,.22],[95600000,.23],[110000000,.24],[134000000,.25],[169000000,.26],[221000000,.27],[390000000,.28],[463000000,.29],[561000000,.30],[709000000,.31],[965000000,.32],[1419000000,.33],[Infinity,.34]];
+function getPtkpCategory(s){return["TK/0","TK/1","K/0"].includes(s)?"A":["TK/2","TK/3","K/1","K/2"].includes(s)?"B":"C"}
+function getTerRate(bruto,cat){const t=cat==="A"?TER_A:cat==="B"?TER_B:TER_C;for(const[m,r]of t){if(bruto<=m)return r}return .34}
+
+const BULAN_ID=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const BULAN_SHORT=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+
+const TAB_CONFIG={
+    hitung:{icon:'calculator',title:'Kalkulator Gaji & Lembur',subtitle:'PT BYD Auto Indonesia'},
+    riwayat:{icon:'bar-chart-3',title:'Riwayat & Grafik',subtitle:'Bandingkan gaji bulanan'},
+    tabungan:{icon:'target',title:'Target Tabungan',subtitle:'Rencanakan masa depan'},
+    setting:{icon:'settings',title:'Pengaturan',subtitle:'Preferensi & info'},
+    share:{icon:'share-2',title:'Bagikan',subtitle:'Ajak teman pakai kalkulator'}
+};
+const TUTORIAL_CONTENT={
+    hitung:{title:'Cara Pakai Kalkulator',desc:'Ikuti langkah untuk hasil akurat',steps:[
+        {t:'Pengaturan Dasar',d:'Isi <b class="text-slate-700">Gaji Pokok</b> dan <b class="text-slate-700">Jumlah Hari Kehadiran</b>.'},
+        {t:'Input Hari Lemburan',d:'Untuk setiap baris durasi, isi <b class="text-slate-700">jumlah hari</b> lembur Anda.'},
+        {t:'Tunjangan & Total Bruto',d:'Isi nominal tunjangan. Meal & Transport otomatis dari hari kehadiran.'},
+        {t:'Rincian Potongan',d:'Pilih <b class="text-slate-700">Status PTKP</b>. BPJS &amp; PPh 21 otomatis dihitung.'},
+        {t:'Lihat Hasil Netto',d:'Hasil <b class="text-slate-700">Gaji Bersih</b> muncul di kartu hitam bawah.'}
+    ]},
+    riwayat:{title:'Panduan Riwayat Gaji',desc:'Simpan & bandingkan gaji bulanan',steps:[
+        {t:'Pilih Periode',d:'Klik <b class="text-slate-700">Simpan</b> → pilih <b class="text-indigo-600">Bulan</b> &amp; <b class="text-indigo-600">Tahun</b> yang ingin disimpan.'},
+        {t:'Untuk Bulan Lalu',d:'Hitung gaji bulan lalu di tab Hitung, lalu simpan dengan memilih bulan &amp; tahun yang sesuai.'},
+        {t:'Ubah Grafik',d:'Toggle <b class="text-indigo-600">6/12 Bulan</b> untuk mengubah rentang grafik gaji bulanan.'},
+        {t:'Klik untuk Detail',d:'Ketuk item riwayat → muncul popup rekap lengkap.'},
+        {t:'Batas Data',d:'Maksimal 12 bulan terakhir. Data terlama otomatis terhapus.'}
+    ]},
+    tabungan:{title:'Panduan Tabungan',desc:'Simulasi dari gaji bersih',steps:[
+        {t:'Atur Persentase',d:'Geser slider <b class="text-slate-700">%Nabung</b> (5%–50%) sesuai target.'},
+        {t:'Reksadana',d:'Ubah <b class="text-emerald-700">Return/Tahun</b> (contoh 8%) untuk melihat hasil compound.'},
+        {t:'Deposito',d:'Ubah <b class="text-blue-700">Bunga/Tahun</b>. Bunga otomatis dipotong pajak 20%.'},
+        {t:'Bandingkan',d:'Lihat perbandingan 5 tahun: Nabung Biasa vs Deposito vs Reksadana.'}
+    ]},
+    setting:{title:'Panduan Setting',desc:'Preferensi aplikasi',steps:[
+        {t:'Install Aplikasi',d:'Klik <b class="text-slate-700">Install Aplikasi</b> untuk pasang ke layar utama HP.'},
+        {t:'Mode Gelap',d:'Toggle <b class="text-slate-700">Mode Gelap</b> untuk kenyamanan mata.'},
+        {t:'Hapus Riwayat',d:'Tombol <b class="text-rose-600">Hapus Riwayat</b> membersihkan semua data.'}
+    ]},
+    share:{title:'Panduan Share',desc:'Ajak teman pakai kalkulator',steps:[
+        {t:'Share WhatsApp',d:'Kirim link ke grup WA atau teman dengan sekali klik.'},
+        {t:'Share Lainnya',d:'Gunakan <b class="text-slate-700">Bagikan Lainnya</b> untuk Telegram, email, dll.'},
+        {t:'Copy Link',d:'Salin link ke clipboard, paste di mana saja.'}
+    ]}
+};
+let currentTab='hitung';
+let currentRiwayatIdx=-1;
+let chartRange=parseInt(localStorage.getItem('byd_chart_range'))||6;
+
+function initSimpanDropdowns(){
+    const bulanSel=document.getElementById('simpanBulan');
+    const tahunSel=document.getElementById('simpanTahun');
+    if(!bulanSel||!tahunSel) return;
+    if(!bulanSel.options.length){
+        BULAN_ID.forEach((b,i)=>{const o=document.createElement('option');o.value=i;o.textContent=b;bulanSel.appendChild(o);});
+        const now=new Date();const curYear=now.getFullYear();
+        for(let y=curYear+1;y>=curYear-2;y--){const o=document.createElement('option');o.value=y;o.textContent=y;tahunSel.appendChild(o);}
+        bulanSel.addEventListener('change',updateSimpanNote);
+        tahunSel.addEventListener('change',updateSimpanNote);
+    }
+}
+
+function updateSliderPosition(){
+    const items=document.querySelectorAll('.capsule-item');
+    const active=document.querySelector('.capsule-item.active');
+    const slider=document.getElementById('capsuleSlider');
+    if(!active||!slider||!items.length) return;
+    const idx=Array.from(items).indexOf(active);
+    if(idx<0) return;
+    const isMobile=window.matchMedia('(max-width:480px)').matches;
+    const ITEM_W=isMobile?42:44;
+    const ITEM_W_ACTIVE=isMobile?84:88;
+    const GAP=2;
+    const NAV_PAD=isMobile?5:6;
+    const left=NAV_PAD+idx*(ITEM_W+GAP);
+    slider.style.transform='translate3d('+left+'px,0,0)';
+    slider.style.width=ITEM_W_ACTIVE+'px';
+    trackIconPillOverlap();
+}
+
+let __iconOverRaf=null;
+function trackIconPillOverlap(){
+    const slider=document.getElementById('capsuleSlider');
+    if(!slider) return;
+    const items=document.querySelectorAll('.capsule-item');
+    if(__iconOverRaf){cancelAnimationFrame(__iconOverRaf);__iconOverRaf=null}
+    const start=performance.now();
+    const duration=550;
+    function apply(){
+        const sr=slider.getBoundingClientRect();
+        items.forEach(function(item){
+            const svg=item.querySelector('svg');
+            if(!svg) return;
+            const ir=svg.getBoundingClientRect();
+            const cx=(ir.left+ir.right)/2;
+            if(cx>=sr.left&&cx<=sr.right) svg.classList.add('pill-over');
+            else svg.classList.remove('pill-over');
+        });
+    }
+    function tick(now){
+        apply();
+        if(now-start<duration) __iconOverRaf=requestAnimationFrame(tick);
+        else __iconOverRaf=null;
+    }
+    __iconOverRaf=requestAnimationFrame(tick);
+}
+
+function switchTab(tabName){
+    if(!TAB_CONFIG[tabName])return;
+    currentTab=tabName;
+    document.querySelectorAll('.capsule-item').forEach(item=>{item.classList.toggle('active',item.dataset.tab===tabName)});
+    document.querySelectorAll('.tab-page').forEach(page=>{page.classList.toggle('active',page.id==='tab'+tabName.charAt(0).toUpperCase()+tabName.slice(1))});
+    const cfg=TAB_CONFIG[tabName];
+    document.getElementById('headerTitle').textContent=cfg.title;
+    document.getElementById('headerSubtitle').textContent=cfg.subtitle;
+    const logo=document.getElementById('headerLogo');
+    if(logo){logo.innerHTML='<i class="w-5 h-5 sm:w-6 sm:h-6" data-lucide="'+cfg.icon+'"></i>';lucide.createIcons();}
+    const btnReset=document.getElementById('btnReset');
+    if(btnReset){if(tabName==='hitung')btnReset.style.display='';else btnReset.style.display='none';}
+    updateSliderPosition();
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(tabName==='riwayat')renderHistory();
+    if(tabName==='tabungan')updateSavings();
+}
+
+function togglePtkpDropdown(e){e.stopPropagation();const t=document.getElementById('ptkpTrigger'),p=document.getElementById('ptkpPanel');if(!t||!p)return;const open=p.classList.contains('open');if(open){p.classList.remove('open');t.classList.remove('open')}else{p.classList.add('open');t.classList.add('open')}}
+function selectPtkp(el){const val=el.dataset.value,label=el.textContent.trim();const h=document.getElementById('statusPtkp'),lb=document.getElementById('ptkpLabel');const t=document.getElementById('ptkpTrigger'),p=document.getElementById('ptkpPanel');if(h)h.value=val;if(lb)lb.textContent=label;document.querySelectorAll('.ptkp-option').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');if(p)p.classList.remove('open');if(t)t.classList.remove('open');calculateAll()}
+document.addEventListener('click',function(e){const w=document.getElementById('ptkpWrapper');if(w&&!w.contains(e.target)){const p=document.getElementById('ptkpPanel'),t=document.getElementById('ptkpTrigger');if(p)p.classList.remove('open');if(t)t.classList.remove('open')}});
+
+function parseRupiah(str){return parseInt((str||'').replace(/[^0-9]/g,''),10)||0}
+
+let __toastTimer=null;
+function showToast(msg,type){
+    let el=document.getElementById('bydToast');
+    if(!el){el=document.createElement('div');el.id='bydToast';el.className='byd-toast';document.body.appendChild(el);}
+    el.textContent=msg;
+    el.classList.remove('success','error');
+    if(type) el.classList.add(type);
+    el.classList.add('show');
+    if(__toastTimer) clearTimeout(__toastTimer);
+    __toastTimer=setTimeout(()=>el.classList.remove('show'),2200);
+}
+
+function setChartRange(m){
+    chartRange=m;
+    try{localStorage.setItem('byd_chart_range',m);}catch(e){}
+    document.querySelectorAll('.chart-range-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.range)===m));
+    renderHistory();
+}
+
+function openSimpanModal(){
+    const netto=parseRupiah(document.getElementById('totalNetto')?.innerText);
+    if(!netto){showToast('Isi kalkulator terlebih dahulu di tab Hitung','error');return}
+    const modal=document.getElementById('simpanModal');
+    if(!modal) return;
+    initSimpanDropdowns();
+    document.getElementById('simpanPrevGapok').textContent=document.getElementById('disp_gajiPokok')?.innerText||'Rp0';
+    document.getElementById('simpanPrevBruto').textContent=document.getElementById('totalBruto')?.innerText||'Rp0';
+    document.getElementById('simpanPrevNetto').textContent=document.getElementById('totalNetto')?.innerText||'Rp0';
+    const now=new Date();
+    document.getElementById('simpanBulan').value=now.getMonth();
+    document.getElementById('simpanTahun').value=now.getFullYear();
+    updateSimpanNote();
+    modal.classList.remove('active');
+    void modal.offsetWidth;
+    modal.classList.add('active');
+    if(!document.body.classList.contains('scroll-locked')){
+        __scrollY=window.scrollY||window.pageYOffset||0;
+        document.body.style.top='-'+__scrollY+'px';
+        document.body.classList.add('scroll-locked');
+    }
+    setTimeout(()=>{try{lucide.createIcons()}catch(e){}},50);
+}
+function closeSimpanModal(){
+    const modal=document.getElementById('simpanModal');
+    if(!modal) return;
+    modal.classList.remove('active');
+    if(document.body.classList.contains('scroll-locked')) unlockScroll();
+}
+function handleSimpanModalClick(e){if(e.target.id==='simpanModal')closeSimpanModal();}
+function updateSimpanNote(){
+    const b=parseInt(document.getElementById('simpanBulan').value);
+    const y=parseInt(document.getElementById('simpanTahun').value);
+    const noteWrap=document.getElementById('simpanNoteWrap');
+    const data=JSON.parse(localStorage.getItem('byd_gaji_history')||'[]');
+    const exists=data.some(d=>{const dd=new Date(d.date);return dd.getMonth()===b&&dd.getFullYear()===y;});
+    if(exists){
+        noteWrap.classList.add('warning');
+        noteWrap.innerHTML='<i data-lucide="alert-triangle"></i><div>Data <b>'+BULAN_ID[b]+' '+y+'</b> sudah ada. Menyimpan akan <b>mengganti</b> data lama.</div>';
+    }else{
+        noteWrap.classList.remove('warning');
+        noteWrap.innerHTML='<i data-lucide="info"></i><div>Akan disimpan sebagai <b>'+BULAN_ID[b]+' '+y+'</b></div>';
+    }
+    try{lucide.createIcons()}catch(e){}
+}
+
+function confirmSaveHistory(){
+    const netto=parseRupiah(document.getElementById('totalNetto')?.innerText);
+    const bruto=parseRupiah(document.getElementById('totalBruto')?.innerText);
+    const potongan=parseRupiah(document.getElementById('nominalPotongan')?.innerText);
+    if(!netto){showToast('Data kalkulator kosong','error');return}
+
+    const bln=parseInt(document.getElementById('simpanBulan').value);
+    const thn=parseInt(document.getElementById('simpanTahun').value);
+    const customDate=new Date(thn,bln,15,12,0,0);
+    const label='15 '+BULAN_SHORT[bln]+' '+thn;
+
+    const data=JSON.parse(localStorage.getItem('byd_gaji_history')||'[]');
+    const otBreakdown={};
+    ['w2','w2_5','w3','w3_5','we8','we9','we10','we10_5'].forEach(k=>{otBreakdown[k]=getNum('ot_'+k)});
+    const snap={
+        date:customDate.toISOString(),label,
+        gajiPokok:getNum('gajiPokok'),kehadiran:getNum('kehadiran'),
+        kpiPersen:getNum('persenKpi'),kpiNominal:parseRupiah(document.getElementById('disp_tunjKpi')?.innerText),
+        tunjKehadiran:getNum('tunjKehadiran'),tunjRumah:getNum('tunjRumah'),tunjGedung:getNum('tunjGedung'),
+        tunjTransport:getNum('tunjTransport'),jemputan:document.getElementById('jemputanIya')?.checked?'Iya':'Tidak',
+        tunjMakan:parseRupiah(document.getElementById('tunjMakan')?.innerText),
+        tunjShiftMalam:getNum('tunjShiftMalam'),tunjKomunikasi:getNum('tunjKomunikasi'),tunjSettingIn:getNum('tunjSettingIn'),
+        kompensasi:getNum('kompensasi'),perfAward:getNum('perfAward'),tunjSeniority:getNum('tunjSeniority'),
+        otBreakdown,totalTul:document.getElementById('disp_totalTulTable')?.innerText||'0 TUL',
+        totalLembur:parseRupiah(document.getElementById('disp_totalLembur')?.innerText),
+        bpjsKesehatan:parseRupiah(document.getElementById('bpjsKesehatan')?.innerText),
+        bpjsJHT:parseRupiah(document.getElementById('bpjsJHT')?.innerText),
+        bpjsJP:parseRupiah(document.getElementById('bpjsJP')?.innerText),
+        pph21:parseRupiah(document.getElementById('pph21')?.innerText),
+        ptkp:document.getElementById('statusPtkp')?.value||'TK/0',
+        terCategory:document.getElementById('terCategoryLabel')?.innerText||'A',
+        terRate:document.getElementById('terRateLabel')?.innerText||'0%',
+        bruto,netto,potongan
+    };
+
+    const existingIdx=data.findIndex(d=>{const dd=new Date(d.date);return dd.getMonth()===bln&&dd.getFullYear()===thn;});
+    if(existingIdx>=0) data[existingIdx]=snap;
+    else data.push(snap);
+    data.sort((a,b)=>new Date(a.date)-new Date(b.date));
+    while(data.length>12) data.shift();
+
+    localStorage.setItem('byd_gaji_history',JSON.stringify(data));
+    closeSimpanModal();
+    renderHistory();
+    showToast('Data '+BULAN_ID[bln]+' '+thn+' berhasil disimpan','success');
+}
+
+function deleteHistory(idx){
+    const data=JSON.parse(localStorage.getItem('byd_gaji_history')||'[]');
+    data.splice(idx,1);
+    localStorage.setItem('byd_gaji_history',JSON.stringify(data));
+    renderHistory();
+}
+
+function renderHistory(){
+    const data=JSON.parse(localStorage.getItem('byd_gaji_history')||'[]');
+    const list=document.getElementById('riwayatList'),chart=document.getElementById('riwayatChart'),empty=document.getElementById('riwayatEmpty');
+    if(!list||!chart||!empty)return;
+    if(!data.length){list.innerHTML='';chart.innerHTML='';empty.style.display='block';return}
+    empty.style.display='none';
+
+    const recent=data.slice(-chartRange);
+    const isCompact=chartRange>6;
+    const W=320,H=120,padX=16,padY=14;
+    const chartW=W-padX*2,chartH=H-padY*2;
+    const values=recent.map(d=>d.netto);
+    const maxV=Math.max(...values),minV=Math.min(...values);
+    const range=maxV-minV||1;
+    const pts=recent.map((d,i)=>{
+        const x=recent.length===1?W/2:padX+(i/(recent.length-1))*chartW;
+        const y=padY+chartH-((d.netto-minV)/range)*chartH;
+        return {x:x,y:y,d:d,i:i};
+    });
+    const pathLine='M'+pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' L');
+    const pathArea=pathLine+' L'+pts[pts.length-1].x.toFixed(1)+','+(H-padY)+' L'+pts[0].x.toFixed(1)+','+(H-padY)+' Z';
+    let svg='<svg class="chart-svg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">';
+    svg+='<defs><linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.28"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>';
+    [0,0.25,0.5,0.75,1].forEach(p=>{const y=padY+chartH*p;svg+='<line class="grid-line" x1="'+padX+'" y1="'+y+'" x2="'+(W-padX)+'" y2="'+y+'"/>'});
+    svg+='<path class="line-area" d="'+pathArea+'"/>';
+    svg+='<path class="line-stroke" d="'+pathLine+'"/>';
+    pts.forEach(function(p,i){const isLatest=i===pts.length-1;svg+='<circle class="line-dot'+(isLatest?' latest':'')+'" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+(isLatest?4.5:(isCompact?3:3.5))+'"/>'});
+    svg+='</svg>';
+    let valuesHtml='<div class="chart-values'+(isCompact?' compact':'')+'">';
+    recent.forEach(function(d,i){
+        const isLatest=i===recent.length-1;
+        const show=!isCompact||i%2===0||isLatest;
+        valuesHtml+='<span'+(isLatest?' class="latest"':'')+'>'+(show?(d.netto/1000000).toFixed(1)+'jt':'')+'</span>';
+    });
+    valuesHtml+='</div>';
+    let labels='<div class="chart-labels'+(isCompact?' compact':'')+'">';
+    recent.forEach(function(d){const m=new Date(d.date).toLocaleDateString('id-ID',{month:'short'});labels+='<span>'+m+'</span>';});
+    labels+='</div>';
+    chart.innerHTML=valuesHtml+svg+labels;
+
+    const totalLen=data.length;
+    list.innerHTML=data.slice().reverse().map(function(d,idx){
+        const realIdx=totalLen-1-idx;
+        return '<div class="riwayat-item" onclick="openRiwayatModal('+realIdx+')">'
+              +  '<div class="riwayat-item-date">'+d.label+'</div>'
+              +  '<div class="riwayat-item-netto">'+formatRupiah(d.netto)+'</div>'
+              +  '<i class="riwayat-item-chevron" data-lucide="chevron-right"></i>'
+              +'</div>';
+    }).join('');
+    try{if(window.lucide)lucide.createIcons()}catch(e){}
+}
+
+function openRiwayatModal(idx){
+    const data=JSON.parse(localStorage.getItem('byd_gaji_history')||'[]');
+    const d=data[idx];if(!d)return;
+    currentRiwayatIdx=idx;
+    document.getElementById('rmDate').textContent=d.label;
+    document.getElementById('rmNetto').textContent=formatRupiah(d.netto);
+    document.getElementById('rmBody').innerHTML=buildRiwayatBody(d);
+    document.getElementById('riwayatModal').classList.add('active');
+    lockScroll();
+    setTimeout(()=>{try{lucide.createIcons()}catch(e){}},50);
+}
+function closeRiwayatModal(){document.getElementById('riwayatModal')?.classList.remove('active');unlockScroll();currentRiwayatIdx=-1;}
+function handleRiwayatModalClick(e){if(e.target.id==='riwayatModal')closeRiwayatModal()}
+function deleteRiwayatFromModal(){
+    if(currentRiwayatIdx<0)return;
+    if(!confirm('Hapus riwayat ini?'))return;
+    deleteHistory(currentRiwayatIdx);
+    closeRiwayatModal();
+}
+
+function rmRow(label,val,cls){return '<div class="rm-row"><span class="rm-row-label">'+label+'</span><span class="rm-row-val '+(cls||'')+'">'+val+'</span></div>';}
+
+function buildRiwayatBody(d){
+    const isLegacy=(d.gajiPokok===undefined);
+    if(isLegacy){
+        return '<div class="rm-section"><div class="rm-section-head"><i data-lucide="info"></i>Ringkasan</div><div class="rm-section-body">'
+              + rmRow('Total Bruto',formatRupiah(d.bruto))
+              + rmRow('Total Potongan','&minus;'+formatRupiah(d.potongan),'rose')
+              + '<div class="rm-row rm-row-total"><span class="rm-row-label">Gaji Bersih</span><span class="rm-row-val emerald">'+formatRupiah(d.netto)+'</span></div>'
+              +'</div></div>'
+              +'<div class="rm-empty">Data lengkap hanya tersimpan untuk riwayat baru.</div>';
+    }
+    let html='';
+    html+='<div class="rm-section"><div class="rm-section-head"><i data-lucide="user"></i>Info Dasar</div><div class="rm-section-body">'
+        + rmRow('Gaji Pokok',formatRupiah(d.gajiPokok))
+        + rmRow('Kehadiran',d.kehadiran+' hari')
+        + rmRow('Status PTKP',d.ptkp||'-')
+        +'</div></div>';
+    const tunjRows=[
+        ['KPI Incentive'+(d.kpiPersen?' ('+d.kpiPersen+'%)':''),d.kpiNominal||0],
+        ['Attendance Bonus',d.tunjKehadiran||0],['Housing Allowance',d.tunjRumah||0],
+        ['Area Living Allowance',d.tunjGedung||0],['Transportation Allowance',d.tunjTransport||0],
+        ['Meal Allowance',d.tunjMakan||0],['Night Shift Allowance',d.tunjShiftMalam||0],
+        ['Communication Allowance',d.tunjKomunikasi||0],['Setting-in Allowance',d.tunjSettingIn||0],
+        ['PKWT Compensation / Other',d.kompensasi||0],['Performance Award',d.perfAward||0],
+        ['Seniority Award',d.tunjSeniority||0]
+    ];
+    const tunjTotal=tunjRows.reduce((s,r)=>s+r[1],0);
+    let tunjHtml='';
+    tunjRows.forEach(r=>{if(r[1]>0) tunjHtml+=rmRow(r[0],formatRupiah(r[1]))});
+    if(!tunjHtml) tunjHtml='<div class="rm-empty">Tidak ada tunjangan</div>';
+    else tunjHtml+='<div class="rm-row rm-row-total"><span class="rm-row-label">Subtotal Tunjangan</span><span class="rm-row-val emerald">'+formatRupiah(tunjTotal)+'</span></div>';
+    html+='<div class="rm-section"><div class="rm-section-head"><i data-lucide="wallet"></i>Tunjangan</div><div class="rm-section-body">'+tunjHtml+'</div></div>';
+    const otMap={'w2':'2 Jam','w2_5':'2.5 Jam','w3':'3 Jam','w3_5':'3.5 Jam','we8':'8 Jam (Libur)','we9':'9 Jam (Libur)','we10':'10 Jam (Libur)','we10_5':'10.5 Jam (Libur)'};
+    let otHtml='';
+    if(d.otBreakdown){Object.keys(otMap).forEach(k=>{const v=d.otBreakdown[k]||0;if(v>0) otHtml+=rmRow(otMap[k],v+' hari')});}
+    otHtml+=rmRow('Total TUL',d.totalTul||'0 TUL','indigo');
+    otHtml+='<div class="rm-row rm-row-total"><span class="rm-row-label">Total Upah Lembur</span><span class="rm-row-val indigo">'+formatRupiah(d.totalLembur||0)+'</span></div>';
+    html+='<div class="rm-section"><div class="rm-section-head"><i data-lucide="clock"></i>Upah Lembur</div><div class="rm-section-body">'+otHtml+'</div></div>';
+    let potHtml='';
+    if(d.bpjsKesehatan>0) potHtml+=rmRow('BPJS Kesehatan (1%)','&minus;'+formatRupiah(d.bpjsKesehatan),'rose');
+    if(d.bpjsJHT>0) potHtml+=rmRow('BPJS JHT (2%)','&minus;'+formatRupiah(d.bpjsJHT),'rose');
+    if(d.bpjsJP>0) potHtml+=rmRow('BPJS JP (1%)','&minus;'+formatRupiah(d.bpjsJP),'rose');
+    if(d.pph21>0) potHtml+=rmRow('PPh 21 (TER '+d.terCategory+' · '+d.terRate+')','&minus;'+formatRupiah(d.pph21),'rose');
+    if(!potHtml) potHtml='<div class="rm-empty">Tidak ada potongan</div>';
+    else potHtml+='<div class="rm-row rm-row-total"><span class="rm-row-label">Total Potongan</span><span class="rm-row-val rose">&minus;'+formatRupiah(d.potongan)+'</span></div>';
+    html+='<div class="rm-section"><div class="rm-section-head"><i data-lucide="receipt"></i>Potongan</div><div class="rm-section-body">'+potHtml+'</div></div>';
+    html+='<div class="rm-section rm-summary"><div class="rm-section-body">'
+        + rmRow('Total Bruto',formatRupiah(d.bruto))
+        + rmRow('Total Potongan','&minus;'+formatRupiah(d.potongan),'rose')
+        + '<div class="rm-row rm-row-total"><span class="rm-row-label">Gaji Bersih (Netto)</span><span class="rm-row-val emerald">'+formatRupiah(d.netto)+'</span></div>'
+        +'</div></div>';
+    return html;
+}
+
+function confirmClearHistory(){if(confirm('Yakin ingin menghapus semua riwayat?')){localStorage.removeItem('byd_gaji_history');renderHistory();showToast('Semua riwayat dihapus','success');}}
+
+function compoundMonthly(perMonth,annualRatePct,years){
+    if(perMonth<=0||years<=0)return 0;
+    const r=annualRatePct/100/12;const n=years*12;
+    if(r===0)return perMonth*n;
+    return perMonth*((Math.pow(1+r,n)-1)/r);
+}
+
+function updateSavings(){
+    const netto=parseRupiah(document.getElementById('totalNetto')?.innerText);
+    const pct=parseInt(document.getElementById('savingsPct')?.value)||20;
+    const perMonth=netto*pct/100;
+    const pctLabel=document.getElementById('savingsPctLabel');if(pctLabel)pctLabel.textContent=pct+'%';
+    const slider=document.getElementById('savingsPct');if(slider)slider.style.setProperty('--range-progress',((pct-5)/(50-5)*100)+'%');
+    const set=function(id,v){const el=document.getElementById(id);if(el)el.textContent=formatRupiah(v)};
+    set('savingsNetto',netto);set('savingsPerMonth',perMonth);
+    const rdRate=parseFloat(document.getElementById('returnReksadana')?.value)||0;
+    set('rd1yr',compoundMonthly(perMonth,rdRate,1));
+    set('rd3yr',compoundMonthly(perMonth,rdRate,3));
+    set('rd5yr',compoundMonthly(perMonth,rdRate,5));
+    const dpRate=parseFloat(document.getElementById('bungaDeposito')?.value)||0;
+    const dpNetRate=dpRate*0.8;
+    const dpNetLabel=document.getElementById('bungaNetLabel');
+    if(dpNetLabel)dpNetLabel.textContent=dpNetRate.toFixed(2).replace('.',',')+'%';
+    set('dp1yr',compoundMonthly(perMonth,dpNetRate,1));
+    set('dp3yr',compoundMonthly(perMonth,dpNetRate,3));
+    set('dp5yr',compoundMonthly(perMonth,dpNetRate,5));
+    set('cmpBiasa',perMonth*60);
+    set('cmpDeposito',compoundMonthly(perMonth,dpNetRate,5));
+    set('cmpReksadana',compoundMonthly(perMonth,rdRate,5));
+}
+
+const SHARE_URL='https://byd-kalkulator.blogspot.com';
+const SHARE_TEXT='Cek kalkulator gaji & lembur PT BYD Auto Indonesia. Simulasi gaji cepat, akurat, dan gratis!';
+function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(SHARE_TEXT+' '+SHARE_URL),'_blank')}
+function shareNative(){if(navigator.share){navigator.share({title:'Kalkulator Gaji BYD',text:SHARE_TEXT,url:SHARE_URL}).catch(()=>{})}else{shareWhatsApp()}}
+function copyLink(){const hint=document.getElementById('copyHint');const done=()=>{if(hint){hint.textContent='Link berhasil dicopy!';hint.classList.add('text-emerald-600');setTimeout(()=>{hint.textContent='Tekan untuk copy ke clipboard';hint.classList.remove('text-emerald-600')},2000)}};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(SHARE_URL).then(done).catch(()=>fallbackCopy(done))}else fallbackCopy(done)}
+function fallbackCopy(cb){const ta=document.createElement('textarea');ta.value=SHARE_URL;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');cb()}catch(e){showToast('Gagal copy link','error')}document.body.removeChild(ta)}
+
+function dismissWelcome(){
+    const overlay=document.getElementById("welcomeOverlay"),main=document.getElementById("mainContent"),body=document.body;
+    overlay.classList.add("leaving");
+    body.classList.remove("justify-center","overflow-hidden");
+    body.classList.add("main-active");
+    window.scrollTo(0,0);
+    requestAnimationFrame(()=>{
+        main.classList.add("revealed");
+        window.scrollTo(0,0);
+        initScrollReveal();initStickyHeader();updateSliderPosition();
+    });
+    setTimeout(()=>{overlay.style.display="none";window.scrollTo(0,0)},750);
+    try{if(localStorage.getItem('tutorialSeen')!=='1'){setTimeout(()=>{openTutorial()},1300)}}catch(err){setTimeout(()=>{openTutorial()},1300)}
+}
+
+let __headerScrollListenerAttached=false;
+function initStickyHeader(){if(__headerScrollListenerAttached)return;__headerScrollListenerAttached=true;const header=document.getElementById('mainHeader');if(!header)return;let ticking=false;function updateHeader(){const y=window.scrollY||window.pageYOffset||0;if(y>8)header.classList.add('scrolled');else header.classList.remove('scrolled');ticking=false}window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(updateHeader);ticking=true}},{passive:true});updateHeader()}
+
+let __revealObserver=null;
+function initScrollReveal(){const items=document.querySelectorAll('.scroll-reveal');if(!items.length)return;if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('in-view','done'));return}__revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;el.classList.add('in-view');setTimeout(()=>el.classList.add('done'),1100);__revealObserver.unobserve(el)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});items.forEach(el=>{const rect=el.getBoundingClientRect();if(rect.top<window.innerHeight-40&&rect.bottom>0){el.classList.add('in-view');setTimeout(()=>el.classList.add('done'),1100)}else __revealObserver.observe(el)})}
+
+let __scrollY=0;
+function lockScroll(){__scrollY=window.scrollY||window.pageYOffset||0;document.body.style.top='-'+__scrollY+'px';document.body.classList.add('scroll-locked')}
+function unlockScroll(){document.body.classList.remove('scroll-locked');document.body.style.top='';window.scrollTo({top:__scrollY,behavior:'instant'})}
+
+function openTutorial(){
+    const ov=document.getElementById('tutorialOverlay');if(!ov)return;
+    const content=TUTORIAL_CONTENT[currentTab]||TUTORIAL_CONTENT.hitung;
+    document.getElementById('tutorialTitle').textContent=content.title;
+    document.getElementById('tutorialDesc').textContent=content.desc;
+    const body=document.getElementById('tutorialContent');
+    const colors=['bg-blue-600','bg-indigo-600','bg-emerald-600','bg-rose-600','bg-amber-500'];
+    body.innerHTML=content.steps.map((s,i)=>'<div class="tutorial-step flex gap-3 p-3 bg-slate-50 rounded-xl mb-2.5 border border-slate-100"><div class="tutorial-num w-7 h-7 rounded-full '+colors[i%colors.length]+' text-white font-bold text-xs flex items-center justify-center shrink-0">'+(i+1)+'</div><div class="flex-1 min-w-0"><p class="step-title text-xs font-bold text-slate-800 mb-0.5">'+s.t+'</p><p class="step-desc text-[11px] text-slate-500 leading-relaxed">'+s.d+'</p></div></div>').join('');
+    ov.classList.remove('opacity-0','pointer-events-none');
+    ov.classList.add('opacity-100','pointer-events-auto');
+    lockScroll();
+    setTimeout(()=>{try{lucide.createIcons()}catch(e){}},50);
+}
+function closeTutorial(){const ov=document.getElementById('tutorialOverlay');if(!ov)return;ov.classList.add('opacity-0','pointer-events-none');ov.classList.remove('opacity-100','pointer-events-auto');unlockScroll();try{localStorage.setItem('tutorialSeen','1')}catch(e){}}
+document.addEventListener('DOMContentLoaded',function(){const ov=document.getElementById('tutorialOverlay');if(ov){ov.addEventListener('click',function(e){if(e.target===ov)closeTutorial()})}});
+
+function updateDarkIcon(isDark){
+    const toggle=document.getElementById('settingToggle');
+    if(toggle) toggle.classList.toggle('on',isDark);
+    const sun=document.getElementById('settingIconSun'),moon=document.getElementById('settingIconMoon');
+    if(sun&&moon){if(isDark){sun.classList.remove('hidden');moon.classList.add('hidden')}else{sun.classList.add('hidden');moon.classList.remove('hidden')}}
+}
+function toggleDarkMode(){const html=document.documentElement;html.classList.toggle('dark-mode');const isDark=html.classList.contains('dark-mode');try{localStorage.setItem('darkMode',isDark?'1':'0')}catch(e){}updateDarkIcon(isDark)}
+
+function stripLeadingZeros(el){if(!el)return;let v=el.value;if(v.length>1&&v[0]==='0'&&v[1]!=='.'){el.value=v.replace(/^0+(?=\d)/,'')}}
+function getNum(e){const t=document.getElementById(e);if(!t)return 0;stripLeadingZeros(t);const n=parseFloat(t.value);return isNaN(n)?0:n}
+function handleJemputan(e){const t=document.getElementById("jemputanIya"),n=document.getElementById("jemputanTidak");"iya"===e?t.checked?n.checked=!1:n.checked=!0:"tidak"===e&&(n.checked?t.checked=!1:t.checked=!0);calculateAll()}
+
+function calculateAll(){
+    verifyCredit();
+    const e=getNum("gajiPokok"),t=getNum("kehadiran"),n=getNum("tunjKehadiran"),g=getNum("tunjRumah"),o=(e+g)/173;
+    document.getElementById("tarifLemburJam").value=o.toFixed(2);
+    let a=0,d=0;
+    for(const[e,t]of Object.entries(MULTIPLIERS)){const n=getNum('ot_'+e)*t,i=n*o,l=document.getElementById('val_ot_'+e);l&&(l.innerText=formatRupiah(i));a+=i;d+=n}
+    const i=(d%1==0?d:d.toFixed(1))+" TUL",l=document.getElementById("disp_totalTulTable");l&&(l.innerText=i);
+    const c=document.getElementById("disp_totalTulBruto");c&&(c.innerText='('+i+')');
+    document.getElementById("totalUpahLembur").innerText=formatRupiah(a);
+    document.getElementById("disp_totalLembur").innerText=formatRupiah(a);
+    const u=e*(getNum("persenKpi")/100),r=document.getElementById("disp_tunjKpi");r&&(r.innerText=formatRupiah(u));
+    const s=document.getElementById("jemputanIya")?.checked,m=document.getElementById("tunjTransport");
+    if(s) m&&(m.value=0,m.readOnly=!0);
+    else{const e=3e4*t;m&&(m.value=e,m.readOnly=!1)}
+    const f=getNum("tunjGedung"),y=getNum("tunjShiftMalam"),p=2e4*t,k=getNum("tunjTransport"),h=getNum("tunjSeniority"),v=getNum("perfAward"),I=getNum("kompensasi"),kom=getNum("tunjKomunikasi"),setIn=getNum("tunjSettingIn");
+    document.getElementById("disp_gajiPokok").innerText=formatRupiah(e);
+    document.getElementById("tunjMakan").innerText=formatRupiah(p);
+    const E=e+u+n+g+f+k+p+y+kom+setIn+I+v+h+a;
+    document.getElementById("totalBruto").innerText=formatRupiah(E);
+    const ptkp=document.getElementById('statusPtkp')?.value||'TK/0';
+    const category=getPtkpCategory(ptkp);
+    const dasarBPJS=e+g;
+    const bpjsKesehatan=0.01*Math.min(dasarBPJS,12000000);
+    const bpjsJHT=0.02*dasarBPJS;
+    const bpjsJP=0.01*Math.min(dasarBPJS,11086300);
+    const totalBPJS=bpjsKesehatan+bpjsJHT+bpjsJP;
+    const premiJKK=0.0024*dasarBPJS,premiJKM=0.003*dasarBPJS,premiKes=0.04*Math.min(dasarBPJS,12000000);
+    const brutoPPh=E+premiJKK+premiJKM+premiKes;
+    const terRate=getTerRate(brutoPPh,category);
+    const pph21=brutoPPh*terRate;
+    const totalPotongan=totalBPJS+pph21;
+    const netto=E-totalPotongan;
+    const setTxt=(id,val)=>{const el=document.getElementById(id);if(el)el.innerText=formatRupiah(val)};
+    setTxt('bpjsKesehatan',bpjsKesehatan);setTxt('bpjsJHT',bpjsJHT);setTxt('bpjsJP',bpjsJP);
+    setTxt('pph21',pph21);setTxt('nominalPotongan',totalPotongan);setTxt('totalNetto',netto);
+    const catEl=document.getElementById('terCategoryLabel');if(catEl)catEl.innerText=category;
+    const rateEl=document.getElementById('terRateLabel');if(rateEl)rateEl.innerText=(terRate*100).toFixed(2).replace('.',',')+'%';
+    if(currentTab==='tabungan')updateSavings();
+}
+function formatRupiah(e){return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(e)}
+function toggleAccordion(){const e=document.getElementById("accordionBody"),t=document.getElementById("accordionIcon");e.classList.toggle("active");e.classList.contains("active")?t.style.transform="rotate(180deg)":t.style.transform="rotate(0deg)"}
+function toggleKalender(){const b=document.getElementById("kalenderBody"),i=document.getElementById("kalenderIcon");if(!b)return;b.classList.toggle("active");if(i)i.style.transform=b.classList.contains("active")?"rotate(180deg)":"rotate(0deg)"}
+
+let kalenderZoom=1,kalenderPanX=0,kalenderPanY=0,kalenderDragging=false,kalenderStartX=0,kalenderStartY=0,kalenderStartPanX=0,kalenderStartPanY=0,kalenderPinchStartDist=0,kalenderPinchStartZoom=1,kalenderPinching=false,kalenderLastTapTime=0;
+const KALENDER_MIN_ZOOM=1,KALENDER_MAX_ZOOM=5;
+function openKalenderPopup(){const lb=document.getElementById('kalenderLightbox');if(!lb)return;kalenderZoom=1;kalenderPanX=0;kalenderPanY=0;kalenderPinching=false;kalenderLastTapTime=0;applyKalenderTransform(true);lb.classList.add('active');lockScroll();setTimeout(()=>{lucide.createIcons()},50)}
+function closeKalenderPopup(){const lb=document.getElementById('kalenderLightbox');if(!lb)return;lb.classList.remove('active');unlockScroll();kalenderZoom=1;kalenderPanX=0;kalenderPanY=0;kalenderPinching=false;kalenderLastTapTime=0;applyKalenderTransform(false)}
+function handleLightboxClick(e){if(e.target.id==='kalenderLightbox')closeKalenderPopup()}
+function applyKalenderTransform(animate){const img=document.getElementById('kalenderImg');if(!img)return;if(!animate)img.classList.add('no-transition');else img.classList.remove('no-transition');img.style.transform='translate('+kalenderPanX+'px,'+kalenderPanY+'px) scale('+kalenderZoom+')';if(!animate){void img.offsetWidth;img.classList.remove('no-transition')}}
+function zoomInKalender(){kalenderZoom=Math.min(KALENDER_MAX_ZOOM,kalenderZoom*1.4);clampKalenderPan();applyKalenderTransform(true)}
+function zoomOutKalender(){kalenderZoom=Math.max(KALENDER_MIN_ZOOM,kalenderZoom/1.4);if(kalenderZoom===1){kalenderPanX=0;kalenderPanY=0}clampKalenderPan();applyKalenderTransform(true)}
+function resetZoomKalender(){kalenderZoom=1;kalenderPanX=0;kalenderPanY=0;applyKalenderTransform(true)}
+function clampKalenderPan(){const stage=document.getElementById('lightboxStage'),img=document.getElementById('kalenderImg');if(!stage||!img)return;const maxX=Math.max(0,(img.clientWidth*kalenderZoom-stage.clientWidth)/2);const maxY=Math.max(0,(img.clientHeight*kalenderZoom-stage.clientHeight)/2);kalenderPanX=Math.max(-maxX,Math.min(maxX,kalenderPanX));kalenderPanY=Math.max(-maxY,Math.min(maxY,kalenderPanY))}
+function initLightboxEvents(){
+    const stage=document.getElementById('lightboxStage'),lb=document.getElementById('kalenderLightbox');
+    if(!stage||!lb||stage.dataset.bound==='1')return;
+    stage.dataset.bound='1';
+    stage.addEventListener('wheel',function(e){e.preventDefault();const delta=e.deltaY<0?1.15:1/1.15;kalenderZoom=Math.max(KALENDER_MIN_ZOOM,Math.min(KALENDER_MAX_ZOOM,kalenderZoom*delta));if(kalenderZoom===1){kalenderPanX=0;kalenderPanY=0}clampKalenderPan();applyKalenderTransform(true)},{passive:false});
+    stage.addEventListener('mousedown',function(e){if(kalenderZoom<=1)return;kalenderDragging=true;stage.classList.add('grabbing');kalenderStartX=e.clientX;kalenderStartY=e.clientY;kalenderStartPanX=kalenderPanX;kalenderStartPanY=kalenderPanY;e.preventDefault()});
+    window.addEventListener('mousemove',function(e){if(!kalenderDragging)return;kalenderPanX=kalenderStartPanX+(e.clientX-kalenderStartX);kalenderPanY=kalenderStartPanY+(e.clientY-kalenderStartY);clampKalenderPan();applyKalenderTransform(false)});
+    window.addEventListener('mouseup',function(){if(!kalenderDragging)return;kalenderDragging=false;stage.classList.remove('grabbing')});
+    stage.addEventListener('touchstart',function(e){if(e.touches.length===2){kalenderPinching=true;kalenderDragging=false;kalenderLastTapTime=0;kalenderPinchStartDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);kalenderPinchStartZoom=kalenderZoom}else if(e.touches.length===1&&kalenderZoom>1&&!kalenderPinching){kalenderDragging=true;kalenderStartX=e.touches[0].clientX;kalenderStartY=e.touches[0].clientY;kalenderStartPanX=kalenderPanX;kalenderStartPanY=kalenderPanY}},{passive:true});
+    stage.addEventListener('touchmove',function(e){if(e.touches.length===2){e.preventDefault();const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const ratio=dist/(kalenderPinchStartDist||dist);kalenderZoom=Math.max(KALENDER_MIN_ZOOM,Math.min(KALENDER_MAX_ZOOM,kalenderPinchStartZoom*ratio));if(kalenderZoom===1){kalenderPanX=0;kalenderPanY=0}clampKalenderPan();applyKalenderTransform(false)}else if(e.touches.length===1&&kalenderDragging){e.preventDefault();kalenderPanX=kalenderStartPanX+(e.touches[0].clientX-kalenderStartX);kalenderPanY=kalenderStartPanY+(e.touches[0].clientY-kalenderStartY);clampKalenderPan();applyKalenderTransform(false)}},{passive:false});
+    stage.addEventListener('touchend',function(e){if(e.touches.length<2)kalenderPinchStartDist=0;if(e.touches.length===0){kalenderDragging=false;applyKalenderTransform(true);if(kalenderPinching){kalenderPinching=false;kalenderLastTapTime=0;return}const now=Date.now();if(now-kalenderLastTapTime<300){kalenderLastTapTime=0;if(kalenderZoom>1)resetZoomKalender();else{kalenderZoom=2.2;clampKalenderPan();applyKalenderTransform(true)}}else kalenderLastTapTime=now}},{passive:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initLightboxEvents);else initLightboxEvents();
+
+function resetAll(){
+    document.querySelectorAll('input[type="number"]').forEach(e=>{e.value=e.defaultValue});
+    const e=document.getElementById("jemputanIya"),t=document.getElementById("jemputanTidak");
+    e&&t&&(e.checked=!1,t.checked=!0);
+    const sp=document.getElementById('statusPtkp');if(sp)sp.value='TK/0';
+    const lbl=document.getElementById('ptkpLabel');if(lbl)lbl.textContent='TK/0 — Lajang, 0 tgg';
+    document.querySelectorAll('.ptkp-option').forEach((o,i)=>{if(i===0)o.classList.add('selected');else o.classList.remove('selected')});
+    calculateAll();
+}
+
+const profileModal=document.getElementById("profileModal"),profileCard=document.getElementById("profileCard"),btnFlip=document.getElementById("btnFlip"),btnClose=document.getElementById("btnClose"),btnModalClose=document.getElementById("btnModalClose");
+function openProfileModal(){profileModal&&(profileModal.classList.add("active"),lockScroll())}
+function closeProfileModal(){profileModal&&(profileModal.classList.remove("active"),unlockScroll(),setTimeout(()=>{profileCard.classList.remove("flipped")},300))}
+function handleOverlayClick(e){e.target===profileModal&&closeProfileModal()}
+function verifyCredit(){const e=document.querySelector('.author-credit');if(!e||!e.innerText.toLowerCase().includes("muhasa.fahlevi"))throw window.calculateAll=void 0,document.body.innerHTML="<div style='color:red;text-align:center;padding:50px;font-family:sans-serif;'><h1>System Error</h1><p>Dilarang mengubah credit pembuat.</p></div>",new Error("Fatal Error: credit modified.")}
+btnFlip.addEventListener("click",()=>{profileCard.classList.add("flipped")});
+btnClose.addEventListener("click",()=>{profileCard.classList.remove("flipped")});
+btnModalClose.addEventListener("click",()=>{closeProfileModal()});
+document.addEventListener('input',function(e){if(e.target&&e.target.matches&&e.target.matches('input[type="number"]'))stripLeadingZeros(e.target)},true);
+
+window.onload=function(){
+    document.querySelectorAll('input[type="number"]').forEach(function(el){if(!el.hasAttribute('placeholder'))el.setAttribute('placeholder','0')});
+    lucide.createIcons();
+    const isDark=document.documentElement.classList.contains('dark-mode');
+    updateDarkIcon(isDark);
+    calculateAll();
+    initLightboxEvents();
+    initSimpanDropdowns();
+    document.querySelectorAll('.chart-range-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.range)===chartRange));
+    renderHistory();
+    updateSavings();
+    const slider=document.getElementById('savingsPct');
+    if(slider)slider.style.setProperty('--range-progress',((parseInt(slider.value)-5)/(50-5)*100)+'%');
+    updateSliderPosition();
+},
+(function(){
+    let __lastViewportWidth=window.innerWidth;
+    window.addEventListener('resize',function(){
+        if(window.innerWidth===__lastViewportWidth) return;
+        __lastViewportWidth=window.innerWidth;
+        updateSliderPosition();
+    });
+})(),
+document.addEventListener("contextmenu",function(e){e.preventDefault()}),
+document.addEventListener("keydown",function(e){
+    if(e.key==='Escape'){
+        const sp=document.getElementById('simpanModal');if(sp&&sp.classList.contains('active')){closeSimpanModal();return}
+        const rm=document.getElementById('riwayatModal');if(rm&&rm.classList.contains('active')){closeRiwayatModal();return}
+        const lb=document.getElementById('kalenderLightbox');if(lb&&lb.classList.contains('active')){closeKalenderPopup();return}
+        const tut=document.getElementById('tutorialOverlay');if(tut&&!tut.classList.contains('pointer-events-none')){closeTutorial();return}
+    }
+    return!e.ctrlKey||"c"!==e.key&&"C"!==e.key&&"x"!==e.key&&"X"!==e.key&&"u"!==e.key&&"U"!==e.key&&"s"!==e.key&&"S"!==e.key&&"a"!==e.key&&"A"!==e.key&&"p"!==e.key&&"P"!==e.key?"F12"===e.key||e.ctrlKey&&e.shiftKey&&("I"===e.key||"i"===e.key||"J"===e.key||"j"===e.key||"C"===e.key||"c"===e.key)?(e.preventDefault(),!1):void 0:(e.preventDefault(),!1)
+}),
+document.addEventListener("selectstart",function(e){e.preventDefault()}),
+document.addEventListener("dragstart",function(e){e.preventDefault()}),
+document.addEventListener("gesturestart",function(e){e.preventDefault()});
+
+const audioUrl="https://res.cloudinary.com/zjaiuouq/video/upload/v1789667105/ssstik.io_1789666842672.mp3";
+let audioCtx=null,audioBuffer=null,isPlaying=!1;
+async function playBoostedAudio(){if(!audioBuffer||isPlaying)return;if(!audioCtx){const e=window.AudioContext||window.webkitAudioContext;audioCtx=new e}"suspended"===audioCtx.state&&await audioCtx.resume();isPlaying=!0;const e=audioCtx.createBufferSource();e.buffer=audioBuffer;const t=audioCtx.createGain();t.gain.value=3;e.connect(t);t.connect(audioCtx.destination);e.onended=()=>{isPlaying=!1};e.start(0)}
+fetch(audioUrl).then(e=>e.arrayBuffer()).then(e=>(new(window.AudioContext||window.webkitAudioContext)).decodeAudioData(e)).then(e=>{audioBuffer=e}).catch(e=>console.error("Gagal load audio:",e));
+document.addEventListener("click",function(e){e.target.closest('#nettoCheckIcon,[data-lucide="check-circle-2"]')&&(e.stopPropagation(),playBoostedAudio())});
+
+// ============================================
+// PWA: Service Worker + Install Prompt
+// ============================================
+const SW_URL = './sw.js';
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register(SW_URL, { scope: './' })
+      .then(function(reg){ console.log('[PWA] SW registered:', reg.scope); })
+      .catch(function(err){ console.warn('[PWA] SW failed:', err.message); });
+  });
+}
+let __deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  __deferredPrompt = e;
+  const row = document.getElementById('installAppRow');
+  if (row && localStorage.getItem('pwaDismissed') !== '1') {
+    row.style.display = '';
+  }
+});
+function installPWA() {
+  if (!__deferredPrompt) {
+    showToast('Buka via Chrome/Edge untuk install', 'error');
+    return;
+  }
+  __deferredPrompt.prompt();
+  __deferredPrompt.userChoice.then(function(result) {
+    if (result.outcome === 'accepted') {
+      showToast('App berhasil diinstall!', 'success');
+    } else {
+      localStorage.setItem('pwaDismissed', '1');
+    }
+    __deferredPrompt = null;
+  });
+}
+window.addEventListener('appinstalled', function() {
+  showToast('App terpasang di perangkat', 'success');
+  const row = document.getElementById('installAppRow');
+  if (row) row.style.display = 'none';
+  try { localStorage.setItem('pwaInstalled', '1'); } catch(e) {}
+});
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  const row = document.getElementById('installAppRow');
+  if (row) row.style.display = 'none';
+}
+    </script>
+</body>
+</html>
