@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<meta name="theme-color" content="#0f172a"/>
+<title>Anda Sedang Offline — Kalkulator Gaji BYD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #881337, #311042, #0284c7);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: #fff;
+    overflow: hidden;
+    user-select: none;
+  }
+  @keyframes gradientBG {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .glow {
+    position: absolute;
+    width: 320px; height: 320px;
+    background: rgba(244, 63, 94, 0.25);
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+  }
+  .card {
+    position: relative;
+    max-width: 380px; width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 32px;
+    padding: 36px 28px 32px;
+    text-align: center;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    animation: fadeUp .8s cubic-bezier(.16,1,.3,1) both;
+    z-index: 10;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .handle { width: 40px; height: 4px; background: rgba(255,255,255,.25); border-radius: 99px; margin: 0 auto 26px; }
+  .logo-wrap {
+    width: 84px; height: 84px;
+    margin: 0 auto 22px;
+    background: linear-gradient(180deg, #dc2626, #b91c1c);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px;
+    box-shadow: 0 18px 40px -10px rgba(220, 38, 38, 0.6), inset 0 1px 0 rgba(255,255,255,.15);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 18px 40px -10px rgba(220,38,38,.6), inset 0 1px 0 rgba(255,255,255,.15); }
+    50%      { box-shadow: 0 22px 60px -5px rgba(220,38,38,.85), inset 0 1px 0 rgba(255,255,255,.2); }
+  }
+  .logo-wrap svg { width: 100%; height: auto; fill: #fff; }
+  .brand-tag { font-size: 9px; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 600; margin-bottom: 6px; }
+  .brand-name { font-size: 11px; font-weight: 700; font-style: italic; color: #fff; margin-bottom: 18px; letter-spacing: .02em; }
+  h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
+  .desc { font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.6; margin-bottom: 24px; font-weight: 400; }
+  .icon-offline {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    margin-bottom: 20px;
+  }
+  .icon-offline svg { width: 26px; height: 26px; stroke: #fca5a5; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .btn-retry {
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    width: 100%; padding: 15px 22px;
+    font-family: inherit; font-size: 13.5px; font-weight: 700;
+    letter-spacing: .01em; color: #020617; background: #fff;
+    border: none; border-radius: 16px; cursor: pointer;
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+    transition: all .2s cubic-bezier(.16,1,.3,1);
+  }
+  .btn-retry:hover  { background: #f1f5f9; transform: translateY(-1px); }
+  .btn-retry:active { transform: scale(.97); }
+  .btn-retry svg { width: 16px; height: 16px; stroke: #020617; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform .6s ease; }
+  .btn-retry:hover svg { transform: rotate(-180deg); }
+  .status { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; font-size: 10.5px; color: rgba(255,255,255,.45); font-weight: 500; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.9); animation: blink 1.4s ease-in-out infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .footer { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: 10.5px; color: rgba(255,255,255,.35); font-weight: 500; z-index: 5; }
+  @media (max-width: 400px) { .card { padding: 30px 22px 26px; border-radius: 28px; } h1 { font-size: 19px; } .desc { font-size: 11.5px; } }
+</style>
+</head>
+<body>
+  <div class="glow" style="top:-80px;left:-80px;"></div>
+  <div class="glow" style="bottom:-100px;right:-80px;background:rgba(99,102,241,.22);"></div>
+
+  <div class="card">
+    <div class="handle"></div>
+    <div class="logo-wrap">
+      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 100,5 C 45,5 5,25 5,50 C 5,75 45,95 100,95 C 155,95 195,75 195,50 C 195,25 155,5 100,5 Z M 100,12 C 150,12 187,30 187,50 C 187,70 150,88 100,88 C 50,88 13,70 13,50 C 13,30 50,12 100,12 Z"/>
+        <path d="M42,32 H65 C72,32 76,35 76,40 C76,44 73,46 68,47 C74,48 78,51 78,57 C78,63 73,67 65,67 H42 V32 Z M50,38 V46 H63 C67,46 69,44 69,42 C69,40 67,38 63,38 H50 Z M50,52 V61 H64 C68,61 70,59 70,56 C70,53 68,52 64,52 H50 Z"/>
+        <path d="M85,32 H94 L101,48 L108,32 H117 L105,53 V67 H97 V53 Z"/>
+        <path d="M125,32 H143 C156,32 163,40 163,50 C163,60 156,67 143,67 H125 V32 Z M133,38 V61 H142 C150,61 154,56 154,50 C154,43 150,38 142,38 H133 Z"/>
+      </svg>
+    </div>
+    <div class="brand-tag">PT BYD Auto Indonesia</div>
+    <div class="brand-name">Build Your Dreams</div>
+    <div class="icon-offline">
+      <svg viewBox="0 0 24 24">
+        <path d="M1 1l22 22"/>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+        <path d="M10.71 5.05A16 16 0 0 1 22.58 9"/>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+        <line x1="12" y1="20" x2="12.01" y2="20"/>
+      </svg>
+    </div>
+    <h1>Anda Sedang Offline</h1>
+    <p class="desc">Kalkulator Gaji BYD memerlukan koneksi internet untuk menghitung secara akurat. Periksa jaringan Anda lalu coba lagi.</p>
+    <button class="btn-retry" onclick="location.reload()">
+      <svg viewBox="0 0 24 24">
+        <polyline points="23 4 23 10 17 10"/>
+        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+      </svg>
+      <span>Coba Lagi</span>
+    </button>
+    <div class="status"><span class="dot"></span><span>Menunggu koneksi internet</span></div>
+  </div>
+  <div class="footer">© 2026 · Muhasa.Fahlevi</div>
+  <script>
+    window.addEventListener('online', function() {
+      setTimeout(function() { location.reload(); }, 600);
+    });
+  </script>
+</body>
+</html>
