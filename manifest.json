@@ -1,0 +1,28 @@
+{
+  "name": "Kalkulator Gaji & Lembur BYD",
+  "short_name": "Gaji BYD",
+  "description": "Kalkulator estimasi gaji pokok, tunjangan, dan upah lembur karyawan PT BYD Auto Indonesia.",
+  "start_url": "./?utm_source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#6366f1",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": ["finance", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co.com/7tL0hW8j/BYD-Company-Ltd-Logo-svg.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
